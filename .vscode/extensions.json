@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "npmx-dev.vscode-npmx",
+    "stylelint.vscode-stylelint",
+    "vue.volar"
+  ]
+}

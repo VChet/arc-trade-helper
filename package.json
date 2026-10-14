@@ -1,0 +1,50 @@
+{
+  "name": "arc-trade-helper",
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@12.11.2",
+  "license": "AGPL-3.0-or-later",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint:ts": "vue-tsc",
+    "lint:js": "eslint .",
+    "lint:js:fix": "npm run lint:js -- --fix",
+    "lint:css": "stylelint **/*{.css,.vue}",
+    "lint:css:fix": "npm run lint:css -- --fix",
+    "lint:all": "npm run lint:ts && npm run lint:js && npm run lint:css"
+  },
+  "dependencies": {
+    "@tabler/icons-vue": "^3.49.0",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "@vueuse/core": "^15.0.0",
+    "@vueuse/integrations": "^15.0.0",
+    "sortablejs": "^1.15.7",
+    "vite": "^8.3.4",
+    "vue": "^3.5.44"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^9.5.1",
+    "@stylistic/stylelint-config": "^5.0.0",
+    "@total-typescript/ts-reset": "^0.6.1",
+    "@types/node": "^26.6.5",
+    "@types/sortablejs": "^1.15.9",
+    "eslint": "^10.12.0",
+    "named-port": "^4.0.1",
+    "postcss-html": "^2.0.0",
+    "sass-embedded": "^1.105.1",
+    "stylelint": "^17.16.0",
+    "stylelint-config-recess-order": "^7.8.0",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "^3.0.0",
+    "stylelint-order": "^8.1.2",
+    "stylelint-rem-over-px": "^2.0.1",
+    "type-fest": "^5.10.0",
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.3.13"
+  }
+}

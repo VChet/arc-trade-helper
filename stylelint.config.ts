@@ -1,0 +1,24 @@
+export default {
+  extends: [
+    "stylelint-config-standard",
+    "@stylistic/stylelint-config",
+    "stylelint-config-recess-order"
+  ],
+  plugins: [
+    "stylelint-declaration-block-no-ignored-properties",
+    "stylelint-order",
+    "stylelint-rem-over-px"
+  ],
+  overrides: [{ files: ["**/*.vue"], customSyntax: "postcss-html" }],
+  ignoreFiles: ["dist/**"],
+  rules: {
+    "@stylistic/selector-list-comma-newline-after": "always-multi-line",
+    "at-rule-empty-line-before": "never",
+    "custom-property-empty-line-before": "never",
+    "declaration-empty-line-before": "never",
+    "plugin/declaration-block-no-ignored-properties": true,
+    "rem-over-px/rem-over-px": [true, { ignore: ["0.5px", "1px", "font-size 16px", "font-size 20px"] }],
+    "rule-empty-line-before": "never",
+    "selector-class-pattern": "[a-z]([a-z-]+)?(__([a-z]+-?)+)?(--([a-z]+-?)+){0,2}"
+  }
+};

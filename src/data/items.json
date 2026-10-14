@@ -1,0 +1,119 @@
+{
+  "assorted-seeds": {
+    "id": "assorted-seeds",
+    "name": "Assorted Seeds",
+    "rarity": "Common",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8d395321e2391b02bd4673d9f7f5e371f48a1b1ada76db27e4d5a8f525c08153.png",
+    "weight": 0.05,
+    "stackSize": 100,
+    "credValue": 100
+  },
+  "raider-tokens": {
+    "id": "raider-tokens",
+    "name": "Raider Tokens",
+    "rarity": "Common",
+    "icon": "https://static.metaforge.app/arc-raiders/icons/raider-tokens.webp",
+    "weight": 0,
+    "stackSize": 0,
+    "credValue": 0
+  },
+  "showstopper": {
+    "id": "showstopper",
+    "name": "Showstopper",
+    "rarity": "Rare",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/1eff7156ed2d249410b310dc0bee59917ced50e41db9adaba18ea0a84414e755.png",
+    "weight": 0.4,
+    "stackSize": 5,
+    "credValue": 2100
+  },
+  "bastion-part": {
+    "id": "bastion-part",
+    "name": "Bastion Cell",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5e3e1a4b33599ec350dcc073b8857c25b9bb918ab85d40efe88d90b9c8941943.png",
+    "weight": 1,
+    "stackSize": 3,
+    "credValue": 3000
+  },
+  "bobcat-iv": {
+    "id": "bobcat-iv",
+    "name": "Bobcat IV",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/41effd20b3bd61678406ac46591c9acc12c5da364234150d1a6a334f46e57545.png",
+    "weight": 7,
+    "stackSize": 1,
+    "credValue": 27000
+  },
+  "bombardier-cell": {
+    "id": "bombardier-cell",
+    "name": "Bombardier Cell",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/a143610219120c46c6f439e9506f342ac016fc93c3d3d1675e3edd24115a7963.png",
+    "weight": 1,
+    "stackSize": 3,
+    "credValue": 3000
+  },
+  "deadline": {
+    "id": "deadline",
+    "name": "Deadline",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8af3c45402fe1d383e6eeb175d17b566b7622c0488543f3dccc8479724307410.png",
+    "weight": 1,
+    "stackSize": 1,
+    "credValue": 6000
+  },
+  "familiar-duck": {
+    "id": "familiar-duck",
+    "name": "Familiar Duck",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/61c779fcb9ab509bd6fc850992124d4c8a7b23d39a267a258424a745d9d60cad.png",
+    "weight": 0.3,
+    "stackSize": 15,
+    "credValue": 7000
+  },
+  "leaper-pulse-unit": {
+    "id": "leaper-pulse-unit",
+    "name": "Leaper Pulse Unit",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/a6bb7b994fbb89af1af900abb7cabd8f2faede6b751a4e4fde311c7d20cfadc5.png",
+    "weight": 1,
+    "stackSize": 3,
+    "credValue": 3000
+  },
+  "rocketeer-part": {
+    "id": "rocketeer-part",
+    "name": "Rocketeer Driver",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/edce8880f66f1740c1b57ed0ee1090ec249b9c4eb7ae29f6280120da743ca0cd.png",
+    "weight": 1,
+    "stackSize": 3,
+    "credValue": 3000
+  },
+  "matriarch-reactor": {
+    "id": "matriarch-reactor",
+    "name": "Matriarch Reactor",
+    "rarity": "Legendary",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/a7622580bfda74425e46b8f36c42cf416f366641ae583c8157f404ff5b697a13.png",
+    "weight": 10,
+    "stackSize": 1,
+    "credValue": 11000
+  },
+  "queen-reactor": {
+    "id": "queen-reactor",
+    "name": "Queen Reactor",
+    "rarity": "Legendary",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/12928d56bcbb13e33eade0536af129c71b37106a675bf4c21009285678258c20.png",
+    "weight": 10,
+    "stackSize": 1,
+    "credValue": 11000
+  },
+  "snap-hook": {
+    "id": "snap-hook",
+    "name": "Snap Hook",
+    "rarity": "Legendary",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/47b3fca0293a250f1ea89bc67025a2378f74e015fcf7ad6a4b781182f225e0ea.png",
+    "weight": 5,
+    "stackSize": 1,
+    "credValue": 14000
+  }
+}

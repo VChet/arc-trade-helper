@@ -1,0 +1,37 @@
+<template>
+  <li class="item-card" :class="data.rarity.toLowerCase()">
+    <header>
+      <img :src="data.icon">
+    </header>
+    <section>
+      <h3>
+        {{ data.name }}
+      </h3>
+      <div class="row">
+        <input v-model="price" type="number">
+        seeds
+      </div>
+    </section>
+  </li>
+</template>
+<script setup lang="ts">
+import { ref } from "vue";
+import { watchDebounced } from "@vueuse/core";
+import { useItemsStore } from "@/store/items";
+import type { PriceEntry } from "@/types/item";
+
+interface Props {
+  item: PriceEntry
+}
+interface Emits {
+  price: [price: PriceEntry["price"]]
+}
+const props = defineProps<Props>();
+const emit = defineEmits<Emits>();
+
+const { getItemData } = useItemsStore();
+const data = getItemData(props.item.itemId);
+
+const price = ref(props.item.price);
+watchDebounced(price, (value) => emit("price", value), { debounce: 500 });
+</script>
