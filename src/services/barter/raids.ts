@@ -7,14 +7,15 @@ export const RAID_SLOTS = 20;
 interface RaidInputItem {
   itemId: Item["id"]
   quantity: number
+  seedPrice: number
 }
 
 function calculateRaids(entries: RaidInputItem[]): Raid[] {
   const raids: Raid[] = [];
 
-  let currentRaid: Raid = { items: [], usedSlots: 0, totalWeight: 0 };
+  let currentRaid: Raid = { items: [], usedSlots: 0, totalWeight: 0, totalSeeds: 0 };
 
-  for (const { itemId, quantity } of entries) {
+  for (const { itemId, quantity, seedPrice } of entries) {
     if (quantity <= 0) continue;
 
     const { weight, stackSize } = getItemData(itemId);
@@ -25,7 +26,7 @@ function calculateRaids(entries: RaidInputItem[]): Raid[] {
     while (remaining > 0) {
       if (currentRaid.usedSlots === RAID_SLOTS) {
         raids.push(currentRaid);
-        currentRaid = { items: [], usedSlots: 0, totalWeight: 0 };
+        currentRaid = { items: [], usedSlots: 0, totalWeight: 0, totalSeeds: 0 };
       }
 
       const availableSlots = RAID_SLOTS - currentRaid.usedSlots;
@@ -46,6 +47,7 @@ function calculateRaids(entries: RaidInputItem[]): Raid[] {
       currentRaid.items.push(raidItem);
       currentRaid.usedSlots += slotsUsed;
       currentRaid.totalWeight += itemWeight;
+      currentRaid.totalSeeds += quantityToAdd * seedPrice;
 
       remaining -= quantityToAdd;
     }

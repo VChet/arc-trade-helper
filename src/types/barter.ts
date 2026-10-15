@@ -4,7 +4,7 @@ export interface ExchangeItem {
   itemId: Item["id"]
   name: string
   quantity: number
-  seedPrice?: number
+  seedPrice: number
   totalSeedValue?: number
 }
 
@@ -49,6 +49,7 @@ export interface Raid {
   items: RaidItem[]
   usedSlots: number
   totalWeight: number
+  totalSeeds: number
 }
 
 export interface RaidsResult {

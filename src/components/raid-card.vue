@@ -3,9 +3,15 @@
     <h4>Raid {{ index + 1 }}</h4>
 
     <div class="summary">
-      Slots: {{ raid.usedSlots }}/{{ RAID_SLOTS }}
-      |
-      Weight: {{ formatWeight(raid.totalWeight) }}
+      <div>
+        <icon-square-dashed title="slots" /> {{ raid.usedSlots }}/{{ RAID_SLOTS }}
+      </div>
+      <div>
+        <icon-weight title="weight" /> {{ formatWeight(raid.totalWeight) }}
+      </div>
+      <div>
+        <icon-seedling title="seeds" /> {{ raid.totalSeeds }}
+      </div>
     </div>
 
     <ul class="grid">
@@ -14,6 +20,7 @@
   </article>
 </template>
 <script setup lang="ts">
+import { IconSeedling, IconSquareDashed, IconWeight } from "@tabler/icons-vue";
 import { formatWeight } from "@/helpers/format";
 import { RAID_SLOTS } from "@/services/barter/raids";
 import type { Raid } from "@/types/barter";

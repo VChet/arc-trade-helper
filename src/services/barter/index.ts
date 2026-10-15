@@ -22,8 +22,8 @@ export function calculateBarter({ inventory, prices, traderItems }: CalculateBar
   });
   // Stage 3: calculate raid capacity and weight
   const raids = calculateRaidPlan({
-    seedExchangeItems: seedExchange.items.map(({ itemId, quantity }) => ({ itemId, quantity })),
-    partsExchangeItems: partsExchange.arcParts.map(({ itemId, quantity }) => ({ itemId, quantity }))
+    seedExchangeItems: seedExchange.items.map(({ itemId, quantity, seedPrice }) => ({ itemId, quantity, seedPrice })),
+    partsExchangeItems: partsExchange.arcParts.map(({ itemId, quantity, seedPrice }) => ({ itemId, quantity, seedPrice }))
   });
 
   return {

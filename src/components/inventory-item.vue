@@ -33,3 +33,8 @@ const data = getItemData(props.item.itemId);
 const quantity = ref(props.item.quantity);
 watchDebounced(quantity, (value) => emit("quantity", value!), { debounce: 500 });
 </script>
+<style scoped>
+.item-card input {
+  text-align: center;
+}
+</style>

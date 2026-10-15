@@ -42,17 +42,19 @@
       display: flex;
       align-items: baseline;
       justify-content: center;
-      padding-inline: 1rem;
-      input {
-        max-width: 5rem;
+      span {
+        padding-inline: 1rem;
       }
     }
   }
   footer {
     display: flex;
-    text-align: center;
     div {
+      display: flex;
       flex: 1;
+      gap: 0.125rem;
+      align-items: center;
+      justify-content: center;
       padding-block: 0.5rem;
       &:not(:last-child) {
         border-right: 1px solid var(--base-dimmed);

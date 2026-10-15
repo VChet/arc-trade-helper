@@ -4,13 +4,13 @@
       <img :src="data.icon">
       <h3>
         {{ data.name }}
-        <arrow-square-out class="icon" />
+        <icon-external-link class="icon" />
       </h3>
     </header>
     <section>
       <div class="row">
         <input v-model="price" type="number">
-        seeds
+        <span>seeds</span>
       </div>
     </section>
   </li>
@@ -18,9 +18,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { watchDebounced } from "@vueuse/core";
+import { IconExternalLink } from "@tabler/icons-vue";
 import { getItemData } from "@/helpers/data";
 import type { PriceEntry } from "@/types/item";
-import ArrowSquareOut from "./icons/arrow-square-out.vue";
 
 interface Props {
   item: PriceEntry
@@ -53,9 +53,10 @@ function goToMarket() {
     position: absolute;
     top: 0;
     right: 0;
-    width: 1rem;
-    height: 1rem;
     margin: 0.25rem;
+  }
+  input {
+    text-align: center;
   }
 }
 </style>

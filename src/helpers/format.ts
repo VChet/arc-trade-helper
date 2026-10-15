@@ -7,6 +7,10 @@ export function formatWeight(weight: number): string {
   return `${Number(weight.toFixed(1))}kg`;
 }
 
+export function pluralize(count: number, word: string): string {
+  return `${count} ${count === 1 ? word : `${word}s`}`;
+}
+
 export function formatItemData(payload: MetaForgeItem): Item {
   return {
     id: payload.id,

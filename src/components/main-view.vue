@@ -16,7 +16,7 @@
     </ul>
 
     <section>
-      <h2>Stage 1: Items to Seeds</h2>
+      <h2>Exchange Items to Seeds</h2>
 
       <template v-if="barterPlan.seedExchange.items.length">
         <ul class="grid">
@@ -26,6 +26,7 @@
         <raid-list :raids="barterPlan.raids.seedExchange" />
 
         <div class="summary">
+          <icon-seedling />
           Seeds after exchange: {{ barterPlan.seedExchange.availableSeeds }}
         </div>
       </template>
@@ -36,7 +37,7 @@
     </section>
 
     <section>
-      <h2>Stage 2: Seeds to Arc Parts</h2>
+      <h2>Exchange Seeds to Arc Parts</h2>
 
       <template v-if="barterPlan.partsExchange.arcParts.length">
         <ul class="grid">
@@ -47,12 +48,15 @@
 
         <div class="summary">
           <div>
+            <icon-seedling-off />
             Seeds spent: {{ barterPlan.partsExchange.spentSeeds }}
           </div>
           <div>
+            <icon-seedling />
             Seeds remaining: {{ barterPlan.partsExchange.remainingSeeds }}
           </div>
           <div>
+            <icon-drone />
             Arc Parts value: {{ barterPlan.partsExchange.totalCredValue }} cred
           </div>
         </div>
@@ -73,6 +77,7 @@
   </main>
 </template>
 <script setup lang="ts">
+import { IconDrone, IconSeedling, IconSeedlingOff } from "@tabler/icons-vue";
 import { ITEM_IDS } from "@/constants/items";
 import { useItemsStore } from "@/store/items";
 import type { Item } from "@/types/item";
@@ -106,7 +111,15 @@ function setQuantity(id: Item["id"], quantity: number) {
     gap: 0.75rem;
   }
   .summary {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
     margin-block: 0.5rem;
+    > * {
+      display: flex;
+      gap: 0.125rem;
+      align-items: center;
+    }
   }
 }
 </style>
