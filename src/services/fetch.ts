@@ -10,18 +10,19 @@ import type { Item } from "@/types/item";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT_PATH = join(__dirname, "..", "data");
 
-async function fetchItemsData() {
+async function fetchItemsData(ids: string[]) {
   function sortItems([_keyA, a]: [string, Item], [_keyB, b]: [string, Item]): number {
     return RARITY_ORDER[a.rarity] - RARITY_ORDER[b.rarity];
   }
 
   const path = join(OUTPUT_PATH, "items.json");
   const items = new Map<Item["id"], Item>();
-  const itemsData = await fetchItems(ITEM_IDS);
+  const itemsData = await fetchItems(ids);
   for (const item of itemsData) items.set(item.data[0].id, formatItemData(item.data[0]));
   const sortedItems = [...items.entries()].sort(sortItems);
   const content = JSON.stringify(Object.fromEntries(sortedItems), null, 2);
   await writeFile(path, `${content}\n`, "utf8");
+  return sortedItems.length;
 }
 async function fetchTradersData() {
   const path = join(OUTPUT_PATH, "nomad-trader.json");
@@ -32,11 +33,13 @@ async function fetchTradersData() {
     .sort((a, b) => RARITY_ORDER[a.rarity] - RARITY_ORDER[b.rarity]);
   const content = JSON.stringify(sortedItems, null, 2);
   await writeFile(path, `${content}\n`, "utf8");
+  return sortedItems.map((item) => item.itemId);
 }
 async function main() {
   await mkdir(OUTPUT_PATH, { recursive: true });
-  await Promise.all([fetchItemsData(), fetchTradersData()]);
-  console.info("Fetch completed");
+  const traderItemIds = await fetchTradersData();
+  const itemCount = await fetchItemsData([...traderItemIds, ...ITEM_IDS]);
+  console.info(`Fetched ${itemCount} items and ${traderItemIds.length} trader offers`);
 }
 
 function exit(error: unknown) {

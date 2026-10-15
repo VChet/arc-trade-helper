@@ -1,13 +1,4 @@
 {
-  "assorted-seeds": {
-    "id": "assorted-seeds",
-    "name": "Assorted Seeds",
-    "rarity": "Common",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8d395321e2391b02bd4673d9f7f5e371f48a1b1ada76db27e4d5a8f525c08153.png",
-    "weight": 0.05,
-    "stackSize": 100,
-    "credValue": 100
-  },
   "raider-tokens": {
     "id": "raider-tokens",
     "name": "Raider Tokens",
@@ -16,6 +7,15 @@
     "weight": 0,
     "stackSize": 0,
     "credValue": 0
+  },
+  "assorted-seeds": {
+    "id": "assorted-seeds",
+    "name": "Assorted Seeds",
+    "rarity": "Common",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8d395321e2391b02bd4673d9f7f5e371f48a1b1ada76db27e4d5a8f525c08153.png",
+    "weight": 0.05,
+    "stackSize": 100,
+    "credValue": 100
   },
   "herbal-bandage": {
     "id": "herbal-bandage",
@@ -43,6 +43,24 @@
     "weight": 0.4,
     "stackSize": 5,
     "credValue": 2100
+  },
+  "hullcracker-ii": {
+    "id": "hullcracker-ii",
+    "name": "Hullcracker II",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5ce13cda08706c8280e8357967706a5f89a550bf2e228e1922e6f8a6d311a8a0.png",
+    "weight": 7,
+    "stackSize": 1,
+    "credValue": 13000
+  },
+  "stencil-parts": {
+    "id": "stencil-parts",
+    "name": "Stencil Parts",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20261007/243909c9c78472cef368e1b5ec44573d8f9ca5f3f61dfad5c55618c468d1424e.png",
+    "weight": 0.1,
+    "stackSize": 500,
+    "credValue": 1
   },
   "bastion-part": {
     "id": "bastion-part",
@@ -107,23 +125,14 @@
     "stackSize": 15,
     "credValue": 7000
   },
-  "hullcracker-ii": {
-    "id": "hullcracker-ii",
-    "name": "Hullcracker II",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5ce13cda08706c8280e8357967706a5f89a550bf2e228e1922e6f8a6d311a8a0.png",
-    "weight": 7,
+  "dolabra": {
+    "id": "dolabra",
+    "name": "Dolabra",
+    "rarity": "Legendary",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/b2827c8b5214e825d552056b77e93b6b40302868e25d51fe4273af47ce8ee399.png",
+    "weight": 8,
     "stackSize": 1,
-    "credValue": 13000
-  },
-  "stencil-parts": {
-    "id": "stencil-parts",
-    "name": "Stencil Parts",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20261007/243909c9c78472cef368e1b5ec44573d8f9ca5f3f61dfad5c55618c468d1424e.png",
-    "weight": 0.1,
-    "stackSize": 500,
-    "credValue": 1
+    "credValue": 27500
   },
   "matriarch-reactor": {
     "id": "matriarch-reactor",
@@ -142,15 +151,6 @@
     "weight": 10,
     "stackSize": 1,
     "credValue": 11000
-  },
-  "dolabra": {
-    "id": "dolabra",
-    "name": "Dolabra",
-    "rarity": "Legendary",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/b2827c8b5214e825d552056b77e93b6b40302868e25d51fe4273af47ce8ee399.png",
-    "weight": 8,
-    "stackSize": 1,
-    "credValue": 27500
   },
   "snap-hook": {
     "id": "snap-hook",

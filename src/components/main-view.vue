@@ -73,7 +73,7 @@
   </main>
 </template>
 <script setup lang="ts">
-import { INVENTORY_ITEMS } from "@/constants/items";
+import { ITEM_IDS } from "@/constants/items";
 import { useItemsStore } from "@/store/items";
 import type { Item } from "@/types/item";
 import InventoryItem from "./inventory-item.vue";
@@ -83,8 +83,8 @@ import TradeItem from "./trade-item.vue";
 import TraderItem from "./trader-item.vue";
 
 const { prices, inventory, barterPlan } = useItemsStore();
-const priceItems = prices.value.filter(({ itemId }) => itemId !== "assorted-seeds" && INVENTORY_ITEMS.includes(itemId));
-const inventoryItems = inventory.value.filter(({ itemId }) => INVENTORY_ITEMS.includes(itemId));
+const priceItems = prices.value.filter(({ itemId }) => !["assorted-seeds", "raider-tokens"].includes(itemId) && ITEM_IDS.includes(itemId));
+const inventoryItems = inventory.value.filter(({ itemId }) => !["raider-tokens"].includes(itemId) && ITEM_IDS.includes(itemId));
 
 function setPrice(id: Item["id"], price: number) {
   const item = prices.value.find(({ itemId }) => itemId === id);

@@ -12,26 +12,11 @@ export const ARC_PART_IDS = [
 export const ITEM_IDS = [
   ...ARC_PART_IDS,
   "assorted-seeds",
-  "blaze-grenade-trap",
   "bobcat-iv",
   "deadline",
-  "dolabra",
   "familiar-duck",
   "herbal-bandage",
-  "hullcracker-ii",
   "raider-tokens",
-  "showstopper",
-  "snap-hook",
-  "stencil-parts"
-] as const satisfies readonly Item["id"][];
-
-export const INVENTORY_ITEMS = [
-  ...ARC_PART_IDS,
-  "assorted-seeds",
-  "bobcat-iv",
-  "deadline",
-  "familiar-duck",
-  "herbal-bandage",
   "showstopper",
   "snap-hook"
 ] as const satisfies readonly Item["id"][];
