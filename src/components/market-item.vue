@@ -37,11 +37,10 @@ const price = ref(props.item.price);
 watchDebounced(price, (value) => emit("price", value), { debounce: 500 });
 
 function goToMarket() {
-  window.open(
-    `https://metaforge.app/arc-raiders/market?item_id=${props.item.itemId}`,
-    "_blank",
-    "noopener, noreferrer"
-  );
+  const url = new URL("https://metaforge.app/arc-raiders/market");
+  url.searchParams.set("item_id", props.item.itemId);
+  url.searchParams.set("trade_type", "seed");
+  window.open(url, "_blank", "noopener, noreferrer");
 }
 </script>
 <style scoped>
