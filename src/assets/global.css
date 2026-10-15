@@ -97,6 +97,7 @@ mark {
 }
 svg {
   flex-shrink: 0;
+  fill: currentcolor;
 }
 .tabler-icon {
   width: 1.2em;

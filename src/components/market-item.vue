@@ -4,6 +4,7 @@
       <img :src="data.icon">
       <h3>
         {{ data.name }}
+        <arrow-square-out class="icon" />
       </h3>
     </header>
     <section>
@@ -19,6 +20,7 @@ import { ref } from "vue";
 import { watchDebounced } from "@vueuse/core";
 import { getItemData } from "@/store/items";
 import type { PriceEntry } from "@/types/item";
+import ArrowSquareOut from "./icons/arrow-square-out.vue";
 
 interface Props {
   item: PriceEntry
@@ -44,6 +46,17 @@ function goToMarket() {
 </script>
 <style scoped>
 .item-card {
-  cursor: pointer;
+  header {
+    position: relative;
+    cursor: pointer;
+  }
+  .icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1rem;
+    height: 1rem;
+    margin: 0.25rem;
+  }
 }
 </style>

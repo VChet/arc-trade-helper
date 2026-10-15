@@ -100,7 +100,7 @@ function setQuantity(id: Item["id"], quantity: number) {
   margin-top: 1.5rem;
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
     gap: 0.75rem;
     .item-card {
       --rarity-color: #6c6c6c;
