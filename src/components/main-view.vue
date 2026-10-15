@@ -96,6 +96,7 @@ function setQuantity(id: Item["id"], quantity: number) {
 }
 </script>
 <style>
+@import url("../assets/card.css");
 .main-container {
   display: grid;
   margin-top: 1.5rem;
@@ -103,61 +104,6 @@ function setQuantity(id: Item["id"], quantity: number) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
     gap: 0.75rem;
-    .item-card {
-      --rarity-color: #6c6c6c;
-      display: grid;
-      overflow: hidden;
-      font-size: 0.875rem;
-      background: var(--card-nested);
-      border: 1px solid var(--base-dimmed);
-      border-radius: var(--radius);
-      transition: border-color 0.3s;
-      &:hover,
-      &:focus-within {
-        border-color: var(--base);
-      }
-      &.uncommon {
-        --rarity-color: #26bf57;
-      }
-      &.rare {
-        --rarity-color: #00a8f2;
-      }
-      &.epic {
-        --rarity-color: #cc3099;
-      }
-      &.legendary {
-        --rarity-color: #ffc600;
-      }
-      &.amplified {
-        --rarity-color: #e78728;
-      }
-      header {
-        display: grid;
-        grid-template-columns: min-content 1fr;
-        place-items: center;
-        background: linear-gradient(to right, var(--rarity-color), var(--card) 30%);
-        border-bottom: 1px solid var(--base-dimmed);
-        img {
-          width: 3rem;
-          height: 3rem;
-        }
-      }
-      section {
-        padding-inline: 1rem;
-        h3 {
-          text-align: center;
-        }
-        .row {
-          display: flex;
-          align-items: baseline;
-        }
-      }
-      footer {
-        padding-block: 0.5rem;
-        margin-top: auto;
-        text-align: center;
-      }
-    }
   }
   .summary {
     margin-block: 0.5rem;

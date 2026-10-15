@@ -14,12 +14,14 @@
         <div v-if="'totalCredValue' in item">
           {{ item.totalCredValue }} cred
         </div>
-        <div v-if="'slots' in item">
-          Slots: {{ item.slots }}
-          |
-          Weight: {{ formatWeight(item.weight) }}
-        </div>
-        <slot />
+        <template v-if="'slots' in item">
+          <div>
+            Slots: {{ item.slots }}
+          </div>
+          <div>
+            Weight: {{ formatWeight(item.weight) }}
+          </div>
+        </template>
       </footer>
     </section>
   </li>
