@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { watchDebounced } from "@vueuse/core";
-import { useItemsStore } from "@/store/items";
+import { getItemData } from "@/store/items";
 import type { InventoryEntry } from "@/types/item";
 
 interface Props {
@@ -28,7 +28,6 @@ interface Emits {
 const props = defineProps<Props>();
 const emit = defineEmits<Emits>();
 
-const { getItemData } = useItemsStore();
 const data = getItemData(props.item.itemId);
 
 const quantity = ref(props.item.quantity);

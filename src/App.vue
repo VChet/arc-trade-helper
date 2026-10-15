@@ -1,5 +1,5 @@
 <template>
-  <header class="container">
+  <header class="container main-header">
     Item data provided by <a href="https://metaforge.app/arc-raiders">MetaForge</a>
   </header>
   <main-view class="container" />
@@ -8,7 +8,7 @@
 import MainView from "./components/main-view.vue";
 </script>
 <style>
-header {
+.main-header {
   padding-block: 0.5rem;
   border-bottom: 1px solid var(--base-dimmed);
 }

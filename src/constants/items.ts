@@ -1,26 +1,23 @@
 import type { Item, NomadTraderEntry } from "@/types/item";
 
-export const ITEM_IDS = [
-  "assorted-seeds",
-  "bastion-part",
-  "bobcat-iv",
-  "bombardier-cell",
-  "deadline",
-  "familiar-duck",
-  "leaper-pulse-unit",
-  "matriarch-reactor",
-  "queen-reactor",
-  "raider-tokens",
-  "rocketeer-part",
-  "showstopper",
-  "snap-hook"
-] as const satisfies readonly Item["id"][];
-
 export const ARC_PART_IDS = [
   "bastion-part",
   "bombardier-cell",
+  "leaper-pulse-unit",
   "matriarch-reactor",
-  "queen-reactor"
+  "queen-reactor",
+  "rocketeer-part"
+] as const satisfies readonly Item["id"][];
+
+export const ITEM_IDS = [
+  ...ARC_PART_IDS,
+  "assorted-seeds",
+  "bobcat-iv",
+  "deadline",
+  "familiar-duck",
+  "raider-tokens",
+  "showstopper",
+  "snap-hook"
 ] as const satisfies readonly Item["id"][];
 
 export const TRADER_ITEMS: NomadTraderEntry[] = [{

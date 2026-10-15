@@ -2,7 +2,7 @@ import { computed } from "vue";
 import { createGlobalState, useLocalStorage } from "@vueuse/core";
 import { TRADER_ITEMS } from "@/constants/items";
 import { getTypedKeys } from "@/helpers/object";
-import { calculateBarter } from "@/service/barter";
+import { calculateBarter } from "@/services/barter";
 import itemsData from "../data/items.json" with { type: "json" };
 import type { MetaForgeItem } from "@/types/api";
 import type { InventoryEntry, PriceEntry } from "@/types/item";
@@ -21,7 +21,7 @@ function syncEntries<T extends { itemId: MetaForgeItem["id"] }>(saved: T[], defa
   return defaults.map((entry) => ({ ...entry, ...savedById.get(entry.itemId) }));
 }
 
-function getItemData(id: MetaForgeItem["id"]) {
+export function getItemData(id: MetaForgeItem["id"]) {
   return itemsData[id];
 }
 
@@ -47,7 +47,6 @@ export const useItemsStore = createGlobalState(() => {
   }));
 
   return {
-    getItemData,
     prices,
     traderItems: TRADER_ITEMS,
     inventory,

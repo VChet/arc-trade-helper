@@ -30,12 +30,15 @@ function formatItemData(payload: MetaForgeItem): Item {
     credValue: payload.value
   };
 }
+function sortItems([_keyA, a]: [string, Item], [_keyB, b]: [string, Item]): number {
+  return RARITY_ORDER[a.rarity] - RARITY_ORDER[b.rarity];
+}
 async function main() {
   await mkdir(OUTPUT_PATH, { recursive: true });
   const itemsData = await Promise.all(ITEM_IDS.map((id) => request<MetaForgeResponse>({ id })));
   const items = new Map<Item["id"], Item>();
   for (const item of itemsData) items.set(item.data[0].id, formatItemData(item.data[0]));
-  const sortedItems = [...items.entries()].sort(([, a], [, b]) => RARITY_ORDER[a.rarity] - RARITY_ORDER[b.rarity]);
+  const sortedItems = [...items.entries()].sort(sortItems);
 
   const path = join(OUTPUT_PATH, "items.json");
   const content = JSON.stringify(Object.fromEntries(sortedItems), null, 2);

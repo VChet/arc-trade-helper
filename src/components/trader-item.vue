@@ -15,14 +15,13 @@
   </li>
 </template>
 <script setup lang="ts">
-import { useItemsStore } from "@/store/items";
-import type { TraderOption } from "@/service/barter";
+import { getItemData } from "@/store/items";
+import type { TraderOption } from "@/types/barter";
 
 interface Props {
   item: TraderOption
 }
 const props = defineProps<Props>();
 
-const { getItemData } = useItemsStore();
 const data = getItemData(props.item.itemId);
 </script>

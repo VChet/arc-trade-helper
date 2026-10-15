@@ -2,12 +2,7 @@
   <main class="main-container">
     <h2>Market Prices</h2>
     <ul class="grid">
-      <priced-item
-        v-for="item in priceItems"
-        :key="item.itemId"
-        :item
-        @price="setPrice(item.itemId, $event)"
-      />
+      <priced-item v-for="item in priceItems" :key="item.itemId" :item @price="setPrice(item.itemId, $event)" />
     </ul>
 
     <h2>Inventory</h2>
@@ -19,32 +14,64 @@
         @quantity="setQuantity(item.itemId, $event)"
       />
     </ul>
+
     <section>
-      <div>
-        Seed Value: {{ barterPlan.inventorySeedValue }}
-      </div>
-      <div>
-        Cred Value: {{ barterPlan.totalCredValue }}
-      </div>
+      <h2>Stage 1: Items to Seeds</h2>
+
+      <template v-if="barterPlan.seedExchange.items.length">
+        <ul class="grid">
+          <trade-item v-for="item in barterPlan.seedExchange.items" :key="item.itemId" :item />
+        </ul>
+
+        <h3>Raid Plan</h3>
+        <raid-list :raids="barterPlan.raids.seedExchange" />
+
+        <div class="summary">
+          Seeds after exchange: {{ barterPlan.seedExchange.availableSeeds }}
+        </div>
+      </template>
+
+      <p v-else class="summary">
+        No items to exchange for seeds
+      </p>
     </section>
 
-    <h2>Barter Plan</h2>
-    <ul v-if="barterPlan.arcParts.length" class="grid">
-      <trade-item v-for="item in barterPlan.arcParts" :key="item.itemId" :item />
-    </ul>
     <section>
-      <div>
-        Remaining Seeds: {{ barterPlan.remainingSeeds }}
-      </div>
-      <div v-if="barterPlan.unpricedItems.length">
-        Unpriced Items: {{ barterPlan.unpricedItems }}
-      </div>
+      <h2>Stage 2: Seeds to Arc Parts</h2>
+
+      <template v-if="barterPlan.partsExchange.arcParts.length">
+        <ul class="grid">
+          <trade-item v-for="item in barterPlan.partsExchange.arcParts" :key="item.itemId" :item />
+        </ul>
+
+        <h3>Raid Plan</h3>
+        <raid-list :raids="barterPlan.raids.partsExchange" />
+
+        <div class="summary">
+          <div>
+            Seeds spent: {{ barterPlan.partsExchange.spentSeeds }}
+          </div>
+          <div>
+            Seeds remaining: {{ barterPlan.partsExchange.remainingSeeds }}
+          </div>
+        </div>
+      </template>
+
+      <p v-else class="summary">
+        No Arc Parts to purchase
+      </p>
     </section>
 
-    <h2>Nomad Trader</h2>
-    <ul class="grid">
-      <trader-item v-for="item in barterPlan.traderOptions" :key="item.itemId" :item />
-    </ul>
+    <section>
+      <h2>Nomad Trader</h2>
+      <p class="summary">
+        Total Cred Value: {{ barterPlan.partsExchange.totalCredValue }}
+      </p>
+
+      <ul class="grid">
+        <trader-item v-for="item in barterPlan.partsExchange.traderOptions" :key="item.itemId" :item />
+      </ul>
+    </section>
   </main>
 </template>
 <script setup lang="ts">
@@ -52,6 +79,7 @@ import { useItemsStore } from "@/store/items";
 import type { Item } from "@/types/item";
 import InventoryItem from "./inventory-item.vue";
 import PricedItem from "./priced-item.vue";
+import RaidList from "./raid-list.vue";
 import TradeItem from "./trade-item.vue";
 import TraderItem from "./trader-item.vue";
 
@@ -71,7 +99,6 @@ function setQuantity(id: Item["id"], quantity: number) {
 <style>
 .main-container {
   display: grid;
-  gap: 1.5rem;
   margin-top: 1.5rem;
   .grid {
     display: grid;
@@ -107,15 +134,10 @@ function setQuantity(id: Item["id"], quantity: number) {
       header {
         display: grid;
         place-items: center;
-        background:
-          linear-gradient(
-            20deg,
-            color-mix(in srgb, var(--rarity-color), transparent 0%) 0%,
-            color-mix(in srgb, var(--rarity-color), transparent 75%) 100%
-          );
+        background: linear-gradient(20deg, var(--rarity-color), transparent 100%);
         img {
-          width: 4.5rem;
-          height: 4.5rem;
+          width: 3rem;
+          height: 3rem;
         }
       }
       section {
@@ -129,16 +151,14 @@ function setQuantity(id: Item["id"], quantity: number) {
         }
       }
       footer {
-        display: flex;
-        justify-content: space-between;
         padding-block: 0.5rem;
         margin-top: auto;
-        div {
-          flex: 1;
-          text-align: center;
-        }
+        text-align: center;
       }
     }
+  }
+  .summary {
+    margin-block: 0.5rem;
   }
 }
 </style>
