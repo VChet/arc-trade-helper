@@ -62,6 +62,15 @@
     "stackSize": 500,
     "credValue": 1
   },
+  "assessor-matrix": {
+    "id": "assessor-matrix",
+    "name": "Assessor Matrix",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/497a1baeb42dc045d4f83ad1f1561932fb0f0db0dd2b64aa71fd8c351cb6b2f1.png",
+    "weight": 0.5,
+    "stackSize": 1,
+    "credValue": 5000
+  },
   "bastion-part": {
     "id": "bastion-part",
     "name": "Bastion Cell",
@@ -97,6 +106,24 @@
     "weight": 1,
     "stackSize": 3,
     "credValue": 3000
+  },
+  "turbine-compressor": {
+    "id": "turbine-compressor",
+    "name": "Turbine Compressor",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/a0ed6194f931a0684b19df15f71e498d665181a4a528383539573384089fe7f8.png",
+    "weight": 0.5,
+    "stackSize": 3,
+    "credValue": 5000
+  },
+  "vaporizer-regulator": {
+    "id": "vaporizer-regulator",
+    "name": "Vaporizer Regulator",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/89bba9cb47ff404446892a8a51efbd7d59340a6f46cc2ad274afd630f1747e50.png",
+    "weight": 0.5,
+    "stackSize": 3,
+    "credValue": 6000
   },
   "bobcat-iv": {
     "id": "bobcat-iv",

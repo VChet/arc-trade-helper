@@ -1,12 +1,15 @@
 import type { Item } from "@/types/item";
 
 export const ARC_PART_IDS = [
+  "assessor-matrix",
   "bastion-part",
   "bombardier-cell",
   "leaper-pulse-unit",
   "matriarch-reactor",
   "queen-reactor",
-  "rocketeer-part"
+  "rocketeer-part",
+  "turbine-compressor",
+  "vaporizer-regulator"
 ] as const satisfies readonly Item["id"][];
 
 export const ITEM_IDS = [
