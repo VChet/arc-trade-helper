@@ -17,6 +17,7 @@ export const ITEM_IDS = [
   "deadline",
   "dolabra",
   "familiar-duck",
+  "herbal-bandage",
   "hullcracker-ii",
   "raider-tokens",
   "showstopper",
@@ -30,6 +31,7 @@ export const INVENTORY_ITEMS = [
   "bobcat-iv",
   "deadline",
   "familiar-duck",
+  "herbal-bandage",
   "showstopper",
   "snap-hook"
 ] as const satisfies readonly Item["id"][];

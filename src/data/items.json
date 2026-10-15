@@ -17,6 +17,15 @@
     "stackSize": 0,
     "credValue": 0
   },
+  "herbal-bandage": {
+    "id": "herbal-bandage",
+    "name": "Herbal Bandage",
+    "rarity": "Uncommon",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8b633a2d39efcb5342abd95c934f9590ada792dedf9c61fead906bc80e606050.png",
+    "weight": 0.15,
+    "stackSize": 5,
+    "credValue": 900
+  },
   "blaze-grenade-trap": {
     "id": "blaze-grenade-trap",
     "name": "Blaze Grenade Trap",
