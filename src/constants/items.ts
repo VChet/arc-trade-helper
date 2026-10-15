@@ -18,7 +18,6 @@ export const ITEM_IDS = [
   "bobcat-iv",
   "deadline",
   "familiar-duck",
-  "herbal-bandage",
   "raider-tokens",
   "showstopper",
   "snap-hook"
