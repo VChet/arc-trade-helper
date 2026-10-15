@@ -2,7 +2,7 @@
   <main class="main-container">
     <h2>Market Prices</h2>
     <ul class="grid">
-      <priced-item v-for="item in priceItems" :key="item.itemId" :item @price="setPrice(item.itemId, $event)" />
+      <market-item v-for="item in priceItems" :key="item.itemId" :item @price="setPrice(item.itemId, $event)" />
     </ul>
 
     <h2>Inventory</h2>
@@ -76,7 +76,7 @@
 import { useItemsStore } from "@/store/items";
 import type { Item } from "@/types/item";
 import InventoryItem from "./inventory-item.vue";
-import PricedItem from "./priced-item.vue";
+import MarketItem from "./market-item.vue";
 import RaidList from "./raid-list.vue";
 import TradeItem from "./trade-item.vue";
 import TraderItem from "./trader-item.vue";

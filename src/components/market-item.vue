@@ -1,6 +1,6 @@
 <template>
-  <li class="item-card" :class="data.rarity.toLowerCase()" @click="goToMarket">
-    <header>
+  <li class="item-card" :class="data.rarity.toLowerCase()">
+    <header @click="goToMarket">
       <img :src="data.icon">
       <h3>
         {{ data.name }}
@@ -8,7 +8,7 @@
     </header>
     <section>
       <div class="row">
-        <input v-model="price" type="number" @click.stop>
+        <input v-model="price" type="number">
         seeds
       </div>
     </section>
