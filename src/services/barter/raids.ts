@@ -1,4 +1,4 @@
-import { getItemData } from "@/store/items";
+import { getItemData } from "@/helpers/data";
 import type { Raid, RaidItem, RaidsResult } from "@/types/barter";
 import type { Item } from "@/types/item";
 

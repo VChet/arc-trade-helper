@@ -17,14 +17,8 @@ export interface ArcPartResult {
   totalCredValue: number
 }
 
-export interface TraderOption {
-  itemId: Item["id"]
-  name: string
-  quantityPerBundle: number
-  bundlePrice: number
+export interface TraderOption extends NomadTraderEntry {
   affordableBundles: number
-  totalQuantity: number
-  remainingCredValue: number
 }
 
 export interface SeedExchangeResult {

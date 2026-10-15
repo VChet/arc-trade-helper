@@ -18,7 +18,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { watchDebounced } from "@vueuse/core";
-import { getItemData } from "@/store/items";
+import { getItemData } from "@/helpers/data";
 import type { PriceEntry } from "@/types/item";
 import ArrowSquareOut from "./icons/arrow-square-out.vue";
 

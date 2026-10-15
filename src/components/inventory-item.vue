@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { watchDebounced } from "@vueuse/core";
-import { getItemData } from "@/store/items";
+import { getItemData } from "@/helpers/data";
 import type { InventoryEntry } from "@/types/item";
 
 interface Props {

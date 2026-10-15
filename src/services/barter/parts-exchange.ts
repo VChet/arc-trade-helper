@@ -1,5 +1,5 @@
 import { ARC_PART_IDS } from "@/constants/items";
-import { getItemData } from "@/store/items";
+import { getItemData } from "@/helpers/data";
 import type { ArcPartResult, PartsExchangeParams, PartsExchangeResult, TraderOption } from "@/types/barter";
 import type { Item } from "@/types/item";
 
@@ -95,18 +95,14 @@ export function calculatePartsExchange(
   const totalCredValue = existingCredValue + purchasedCredValue;
 
   const traderOptions: TraderOption[] = traderItems.map((offer) => {
-    const item = getItemData(offer.itemId);
-
-    const affordableBundles = offer.bundlePrice > 0 ? Math.floor(totalCredValue / offer.bundlePrice) : 0;
-
+    const affordableBundles = offer.price > 0 ? Math.floor(totalCredValue / offer.price) : 0;
     return {
       itemId: offer.itemId,
-      name: item.name,
-      quantityPerBundle: offer.quantityPerBundle,
-      bundlePrice: offer.bundlePrice,
-      affordableBundles,
-      totalQuantity: affordableBundles * offer.quantityPerBundle,
-      remainingCredValue: totalCredValue - affordableBundles * offer.bundlePrice
+      title: offer.title,
+      rarity: offer.rarity,
+      icon: offer.icon,
+      price: offer.price,
+      affordableBundles
     };
   });
 

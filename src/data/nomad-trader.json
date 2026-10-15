@@ -1,0 +1,37 @@
+[
+  {
+    "itemId": "raider-tokens",
+    "title": "Raider Tokens x25",
+    "rarity": "Common",
+    "icon": "https://static.metaforge.app/arc-raiders/icons/raider-tokens.webp",
+    "price": 150000
+  },
+  {
+    "itemId": "blaze-grenade-trap",
+    "title": "Blaze Grenade Trap",
+    "rarity": "Rare",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/9d18194935535872b01fa72626f28a3e643e05530efca52143cb90ebaf069944.png",
+    "price": 10000
+  },
+  {
+    "itemId": "hullcracker-ii",
+    "title": "Hullcracker II",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5ce13cda08706c8280e8357967706a5f89a550bf2e228e1922e6f8a6d311a8a0.png",
+    "price": 30000
+  },
+  {
+    "itemId": "stencil-parts",
+    "title": "Stencil Parts",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20261007/243909c9c78472cef368e1b5ec44573d8f9ca5f3f61dfad5c55618c468d1424e.png",
+    "price": 9000
+  },
+  {
+    "itemId": "dolabra",
+    "title": "Dolabra",
+    "rarity": "Legendary",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/b2827c8b5214e825d552056b77e93b6b40302868e25d51fe4273af47ce8ee399.png",
+    "price": 60000
+  }
+]

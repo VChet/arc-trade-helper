@@ -15,8 +15,9 @@
           {{ item.totalCredValue }} cred
         </div>
         <div v-if="'slots' in item">
-          {{ item.slots }} slots
-          {{ formatWeight(item.weight) }}
+          Slots: {{ item.slots }}
+          |
+          Weight: {{ formatWeight(item.weight) }}
         </div>
         <slot />
       </footer>
@@ -24,8 +25,8 @@
   </li>
 </template>
 <script setup lang="ts">
+import { getItemData } from "@/helpers/data";
 import { formatWeight } from "@/helpers/format";
-import { getItemData } from "@/store/items";
 import type { ArcPartResult, ExchangeItem, RaidItem } from "@/types/barter";
 
 interface Props {

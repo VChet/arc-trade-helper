@@ -1,4 +1,4 @@
-import type { MetaForgeItem } from "./api";
+import type { MetaForgeItem, MetaForgeTraderOffer } from "./api";
 
 export interface Item {
   id: MetaForgeItem["id"]
@@ -18,8 +18,9 @@ export interface InventoryEntry {
   quantity: number
 }
 export interface NomadTraderEntry {
-  itemId: MetaForgeItem["id"]
-  quantity: number
-  quantityPerBundle: number
-  bundlePrice: number
+  itemId: string
+  title: MetaForgeTraderOffer["offer_title"]
+  rarity: MetaForgeItem["rarity"]
+  icon: Item["icon"]
+  price: number
 }

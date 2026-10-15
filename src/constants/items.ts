@@ -1,4 +1,4 @@
-import type { Item, NomadTraderEntry } from "@/types/item";
+import type { Item } from "@/types/item";
 
 export const ARC_PART_IDS = [
   "bastion-part",
@@ -12,20 +12,27 @@ export const ARC_PART_IDS = [
 export const ITEM_IDS = [
   ...ARC_PART_IDS,
   "assorted-seeds",
+  "blaze-grenade-trap",
+  "bobcat-iv",
+  "deadline",
+  "dolabra",
+  "familiar-duck",
+  "hullcracker-ii",
+  "raider-tokens",
+  "showstopper",
+  "snap-hook",
+  "stencil-parts"
+] as const satisfies readonly Item["id"][];
+
+export const INVENTORY_ITEMS = [
+  ...ARC_PART_IDS,
+  "assorted-seeds",
   "bobcat-iv",
   "deadline",
   "familiar-duck",
-  "raider-tokens",
   "showstopper",
   "snap-hook"
 ] as const satisfies readonly Item["id"][];
-
-export const TRADER_ITEMS: NomadTraderEntry[] = [{
-  itemId: "raider-tokens",
-  quantity: 1,
-  quantityPerBundle: 25,
-  bundlePrice: 150000
-}];
 
 export const RARITY_ORDER: Record<Item["rarity"], number> = {
   Common: 0,

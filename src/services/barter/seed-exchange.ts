@@ -1,5 +1,5 @@
 import { ARC_PART_IDS } from "@/constants/items";
-import { getItemData } from "@/store/items";
+import { getItemData } from "@/helpers/data";
 import type { SeedExchangeParams, SeedExchangeResult } from "@/types/barter";
 
 export function calculateSeedExchange({ inventory, prices }: SeedExchangeParams): SeedExchangeResult {
