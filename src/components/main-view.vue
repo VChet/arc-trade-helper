@@ -23,7 +23,6 @@
           <trade-item v-for="item in barterPlan.seedExchange.items" :key="item.itemId" :item />
         </ul>
 
-        <h3>Raid Plan</h3>
         <raid-list :raids="barterPlan.raids.seedExchange" />
 
         <div class="summary">
@@ -44,7 +43,6 @@
           <trade-item v-for="item in barterPlan.partsExchange.arcParts" :key="item.itemId" :item />
         </ul>
 
-        <h3>Raid Plan</h3>
         <raid-list :raids="barterPlan.raids.partsExchange" />
 
         <div class="summary">
@@ -53,6 +51,9 @@
           </div>
           <div>
             Seeds remaining: {{ barterPlan.partsExchange.remainingSeeds }}
+          </div>
+          <div>
+            Arc Parts value: {{ barterPlan.partsExchange.totalCredValue }} cred
           </div>
         </div>
       </template>
@@ -64,9 +65,6 @@
 
     <section>
       <h2>Nomad Trader</h2>
-      <p class="summary">
-        Total Cred Value: {{ barterPlan.partsExchange.totalCredValue }}
-      </p>
 
       <ul class="grid">
         <trader-item v-for="item in barterPlan.partsExchange.traderOptions" :key="item.itemId" :item />
@@ -103,12 +101,13 @@ function setQuantity(id: Item["id"], quantity: number) {
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
-    gap: 1rem;
+    gap: 0.75rem;
     .item-card {
       --rarity-color: #6c6c6c;
       display: grid;
       overflow: hidden;
       font-size: 0.875rem;
+      background: var(--card-nested);
       border: 1px solid var(--base-dimmed);
       border-radius: var(--radius);
       transition: border-color 0.3s;
@@ -133,8 +132,10 @@ function setQuantity(id: Item["id"], quantity: number) {
       }
       header {
         display: grid;
+        grid-template-columns: min-content 1fr;
         place-items: center;
-        background: linear-gradient(20deg, var(--rarity-color), transparent 100%);
+        background: linear-gradient(to right, var(--rarity-color), var(--card) 30%);
+        border-bottom: 1px solid var(--base-dimmed);
         img {
           width: 3rem;
           height: 3rem;

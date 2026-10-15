@@ -2,11 +2,11 @@
   <li class="item-card" :class="data.rarity.toLowerCase()">
     <header>
       <img :src="data.icon">
-    </header>
-    <section>
       <h3>
         {{ item.name }} x{{ item.quantity }}
       </h3>
+    </header>
+    <section>
       <footer>
         <div v-if="'totalSeedValue' in item">
           {{ item.totalSeedValue }} seeds

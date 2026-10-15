@@ -2,11 +2,11 @@
   <li class="item-card" :class="data.rarity.toLowerCase()">
     <header>
       <img :src="data.icon">
-    </header>
-    <section>
       <h3>
         {{ data.name }}
       </h3>
+    </header>
+    <section>
       <div class="row">
         <input v-model="quantity" type="number">
       </div>

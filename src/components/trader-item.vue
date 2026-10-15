@@ -2,12 +2,10 @@
   <li class="item-card" :class="data.rarity.toLowerCase()">
     <header>
       <img :src="data.icon">
-    </header>
-    <section>
       <h3>
         {{ item.name }} x{{ item.quantityPerBundle }}
       </h3>
-    </section>
+    </header>
     <footer>
       <div>{{ item.bundlePrice }} cred</div>
       <div>Affordable: {{ item.affordableBundles }}</div>

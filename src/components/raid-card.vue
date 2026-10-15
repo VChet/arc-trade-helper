@@ -28,6 +28,7 @@ defineProps<Props>();
 <style>
 .raid-card {
   padding: 1rem;
+  background: var(--card);
   border: 1px solid var(--base-dimmed);
   border-radius: var(--radius);
 }

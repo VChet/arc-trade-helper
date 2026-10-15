@@ -1,9 +1,11 @@
 @import url("./fonts");
 :root {
-  --radius: 0.375rem;
-  --base: #c0c0c0;
-  --base-dimmed: #35352f;
-  --background: #222;
+  --radius: 0.625rem;
+  --base: #ece2d0;
+  --base-dimmed: #ece2d014;
+  --card: #16181d;
+  --card-nested: #1c1f25;
+  --background: #0d0e11;
   --accent: #f7f7f7;
 }
 *,
@@ -20,7 +22,7 @@ html {
   -webkit-tap-highlight-color: transparent;
   scrollbar-gutter: stable;
   overscroll-behavior-x: none;
-  font-family: "Exo 2", "Open Sans", sans-serif;
+  font-family: Barlow, "Open Sans", sans-serif;
   font-size: 16px;
   font-weight: normal;
   font-variant-numeric: tabular-nums;
@@ -41,13 +43,13 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 h1 {
-  margin-block: 1rem;
+  margin-block: 1.5rem;
 }
 h2 {
-  margin-block: 0.5rem;
+  margin-block: 1rem;
 }
 h3 {
-  margin-block: 0.25rem;
+  margin-block: 0.5rem;
 }
 p, li {
   text-wrap: pretty;

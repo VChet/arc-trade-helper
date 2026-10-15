@@ -1,9 +1,5 @@
 <template>
   <section class="raid-list">
-    <p class="summary">
-      Raids: {{ raids.length }}
-    </p>
-
     <div v-if="raids.length" class="raid-cards">
       <raid-card v-for="(raid, index) in raids" :key="index" :raid :index />
     </div>
@@ -31,5 +27,6 @@ defineProps<Props>();
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-block: 1rem;
 }
 </style>

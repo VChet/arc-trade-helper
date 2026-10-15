@@ -2,11 +2,11 @@
   <li class="item-card" :class="data.rarity.toLowerCase()" @click="goToMarket">
     <header>
       <img :src="data.icon">
-    </header>
-    <section>
       <h3>
         {{ data.name }}
       </h3>
+    </header>
+    <section>
       <div class="row">
         <input v-model="price" type="number" @click.stop>
         seeds
@@ -45,9 +45,5 @@ function goToMarket() {
 <style scoped>
 .item-card {
   cursor: pointer;
-  h3 {
-    color: var(--accent);
-    text-decoration: underline;
-  }
 }
 </style>
