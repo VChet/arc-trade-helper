@@ -35,15 +35,6 @@
     "stackSize": 3,
     "credValue": 3000
   },
-  "bobcat-iv": {
-    "id": "bobcat-iv",
-    "name": "Bobcat IV",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/41effd20b3bd61678406ac46591c9acc12c5da364234150d1a6a334f46e57545.png",
-    "weight": 7,
-    "stackSize": 1,
-    "credValue": 27000
-  },
   "bombardier-cell": {
     "id": "bombardier-cell",
     "name": "Bombardier Cell",
@@ -52,24 +43,6 @@
     "weight": 1,
     "stackSize": 3,
     "credValue": 3000
-  },
-  "deadline": {
-    "id": "deadline",
-    "name": "Deadline",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8af3c45402fe1d383e6eeb175d17b566b7622c0488543f3dccc8479724307410.png",
-    "weight": 1,
-    "stackSize": 1,
-    "credValue": 6000
-  },
-  "familiar-duck": {
-    "id": "familiar-duck",
-    "name": "Familiar Duck",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/61c779fcb9ab509bd6fc850992124d4c8a7b23d39a267a258424a745d9d60cad.png",
-    "weight": 0.3,
-    "stackSize": 15,
-    "credValue": 7000
   },
   "leaper-pulse-unit": {
     "id": "leaper-pulse-unit",
@@ -88,6 +61,33 @@
     "weight": 1,
     "stackSize": 3,
     "credValue": 3000
+  },
+  "bobcat-iv": {
+    "id": "bobcat-iv",
+    "name": "Bobcat IV",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/41effd20b3bd61678406ac46591c9acc12c5da364234150d1a6a334f46e57545.png",
+    "weight": 7,
+    "stackSize": 1,
+    "credValue": 27000
+  },
+  "deadline": {
+    "id": "deadline",
+    "name": "Deadline",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8af3c45402fe1d383e6eeb175d17b566b7622c0488543f3dccc8479724307410.png",
+    "weight": 1,
+    "stackSize": 1,
+    "credValue": 6000
+  },
+  "familiar-duck": {
+    "id": "familiar-duck",
+    "name": "Familiar Duck",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/61c779fcb9ab509bd6fc850992124d4c8a7b23d39a267a258424a745d9d60cad.png",
+    "weight": 0.3,
+    "stackSize": 15,
+    "credValue": 7000
   },
   "matriarch-reactor": {
     "id": "matriarch-reactor",
