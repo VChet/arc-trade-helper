@@ -16,7 +16,6 @@ export const ITEM_IDS = [
   ...ARC_PART_IDS,
   "assorted-seeds",
   "bobcat-iv",
-  "deadline",
   "familiar-duck",
   "raider-tokens",
   "showstopper",

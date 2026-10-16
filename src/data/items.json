@@ -125,15 +125,6 @@
     "stackSize": 1,
     "credValue": 27000
   },
-  "deadline": {
-    "id": "deadline",
-    "name": "Deadline",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8af3c45402fe1d383e6eeb175d17b566b7622c0488543f3dccc8479724307410.png",
-    "weight": 1,
-    "stackSize": 1,
-    "credValue": 6000
-  },
   "familiar-duck": {
     "id": "familiar-duck",
     "name": "Familiar Duck",
