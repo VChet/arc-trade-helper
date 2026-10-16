@@ -1,5 +1,8 @@
 import type { Item } from "@/types/item";
 
+export const SEEDS_ID = "assorted-seeds" satisfies Item["id"];
+export const TOKENS_ID = "raider-tokens" satisfies Item["id"];
+
 export const ARC_PART_IDS = [
   "assessor-matrix",
   "bastion-part",
@@ -14,10 +17,10 @@ export const ARC_PART_IDS = [
 
 export const ITEM_IDS = [
   ...ARC_PART_IDS,
-  "assorted-seeds",
+  SEEDS_ID,
+  TOKENS_ID,
   "bobcat-iv",
   "familiar-duck",
-  "raider-tokens",
   "showstopper",
   "snap-hook"
 ] as const satisfies readonly Item["id"][];

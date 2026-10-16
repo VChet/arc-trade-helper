@@ -1,4 +1,4 @@
-import { ARC_PART_IDS } from "../constants/items.ts";
+import { ARC_PART_IDS, TOKENS_ID } from "../constants/items.ts";
 import { getItemData } from "./data.ts";
 import type { MetaForgeItem, MetaForgeTraderOffer } from "@/types/api";
 import type { Item, NomadTraderEntry } from "@/types/item";
@@ -35,7 +35,7 @@ export function formatItemData(payload: MetaForgeItem): Item {
 export function formatTraderOffer(payload: MetaForgeTraderOffer): NomadTraderEntry | null {
   const needsArcParts = payload.accepted_items.some((item) => ARC_PART_IDS.includes(item.id));
   if (!needsArcParts) return null;
-  const fallback = getItemData("raider-tokens") as Item;
+  const fallback = getItemData(TOKENS_ID) as Item;
   return {
     itemId: payload.item?.id ?? fallback.id,
     title: payload.offer_title,

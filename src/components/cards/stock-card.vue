@@ -14,11 +14,11 @@
         :name="`quantity-${item.itemId}`"
         type="number"
         min="0"
-        :max="item.itemId === 'assorted-seeds' ? 30_000 : 300"
+        :max="item.itemId === SEEDS_ID ? 30_000 : 300"
         step="1"
       >
     </div>
-    <div v-if="item.itemId !== 'assorted-seeds'" class="market-field">
+    <div v-if="item.itemId !== SEEDS_ID" class="market-field">
       <icon-seedling />
       <input
         v-model="price"
@@ -39,6 +39,7 @@
 import { onMounted, ref } from "vue";
 import { watchDebounced } from "@vueuse/core";
 import { IconChartHistogram, IconPackages, IconSeedling } from "@tabler/icons-vue";
+import { SEEDS_ID } from "@/constants/items";
 import { getItemData } from "@/helpers/data";
 import { calculateRecommendedPrice, type RecommendedPrice } from "@/helpers/recommended-price";
 import { fetchPriceHistory } from "@/services/meta-forge";
@@ -64,7 +65,7 @@ watchDebounced(quantity, (value) => emit("quantity", value!), { debounce: 500 })
 watchDebounced(price, (value) => emit("price", value), { debounce: 500 });
 
 onMounted(async () => {
-  if (props.item.itemId === "assorted-seeds") return;
+  if (props.item.itemId === SEEDS_ID) return;
   const priceHistory = await fetchPriceHistory(props.item.itemId);
   recommendedPrice.value = calculateRecommendedPrice(priceHistory);
   if (recommendedPrice.value.price && !price.value) price.value = recommendedPrice.value.price!;

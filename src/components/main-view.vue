@@ -97,7 +97,7 @@
 </template>
 <script setup lang="ts">
 import { IconDrone, IconLayoutGrid, IconSeedling, IconSeedlingOff } from "@tabler/icons-vue";
-import { ITEM_IDS } from "@/constants/items";
+import { ITEM_IDS, TOKENS_ID } from "@/constants/items";
 import { CAPACITY } from "@/helpers/capacity";
 import { useItemsStore } from "@/store/items";
 import type { Item } from "@/types/item";
@@ -109,7 +109,7 @@ import RaidList from "./raid-list.vue";
 const { prices, inventory, inventoryCapacity, barterPlan } = useItemsStore();
 const priceMap = new Map(prices.value.map((item) => [item.itemId, item]));
 const itemRows = inventory.value
-  .filter(({ itemId }) => itemId !== "raider-tokens" && ITEM_IDS.includes(itemId))
+  .filter(({ itemId }) => itemId !== TOKENS_ID && ITEM_IDS.includes(itemId))
   .map((inventoryItem) => {
     const priceItem = priceMap.get(inventoryItem.itemId);
     if (!priceItem) throw new Error(`Missing price entry for item "${inventoryItem.itemId}"`);

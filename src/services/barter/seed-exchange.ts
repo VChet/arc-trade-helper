@@ -1,4 +1,4 @@
-import { ARC_PART_IDS } from "@/constants/items";
+import { ARC_PART_IDS, SEEDS_ID } from "@/constants/items";
 import { getItemData } from "@/helpers/data";
 import type { SeedExchangeParams, SeedExchangeResult } from "@/types/barter";
 
@@ -13,7 +13,7 @@ export function calculateSeedExchange({ inventory, prices }: SeedExchangeParams)
   for (const { itemId, quantity } of inventory) {
     if (quantity <= 0) continue;
 
-    if (itemId === "assorted-seeds") {
+    if (itemId === SEEDS_ID) {
       existingSeeds += quantity;
       continue;
     }
