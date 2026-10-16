@@ -141,6 +141,7 @@ function setQuantity(id: Item["id"], quantity: number) {
     display: flex;
     gap: 0.25rem;
     align-items: center;
+    justify-self: start;
     margin-block: 0.5rem;
     input {
       width: 3rem;
