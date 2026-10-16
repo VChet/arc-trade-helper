@@ -1,5 +1,9 @@
 <template>
   <main class="main-container">
+    <p>
+      Enter how many of each item you have in your inventory in the first field.
+      Click an item's name to open its MetaForge Market page, check the market price, and enter it in the second field.
+    </p>
     <h2>Stock and Market Prices</h2>
     <ul class="grid">
       <stock-card
