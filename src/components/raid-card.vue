@@ -4,7 +4,7 @@
 
     <div class="summary">
       <div>
-        <icon-square-dashed title="slots" /> {{ raid.usedSlots }}/{{ RAID_SLOTS }}
+        <icon-layout-grid title="slots" /> {{ raid.usedSlots }}/{{ raid.capacity }}
       </div>
       <div>
         <icon-weight title="weight" /> {{ formatWeight(raid.totalWeight) }}
@@ -20,9 +20,8 @@
   </article>
 </template>
 <script setup lang="ts">
-import { IconSeedling, IconSquareDashed, IconWeight } from "@tabler/icons-vue";
+import { IconLayoutGrid, IconSeedling, IconWeight } from "@tabler/icons-vue";
 import { formatWeight } from "@/helpers/format";
-import { RAID_SLOTS } from "@/services/barter/raids";
 import type { Raid } from "@/types/barter";
 import TradeCard from "./cards/trade-card.vue";
 

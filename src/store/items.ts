@@ -1,5 +1,6 @@
 import { computed } from "vue";
 import { createGlobalState, useLocalStorage } from "@vueuse/core";
+import { CAPACITY, normalizeInventoryCapacity } from "@/helpers/capacity";
 import { getTypedKeys } from "@/helpers/object";
 import { calculateBarter } from "@/services/barter";
 import itemsData from "../data/items.json" with { type: "json" };
@@ -10,10 +11,12 @@ import type { InventoryEntry, PriceEntry } from "@/types/item";
 interface ItemsStore {
   prices: PriceEntry[]
   inventory: InventoryEntry[]
+  inventoryCapacity: number
 };
 const DEFAULT_STORE: ItemsStore = {
   prices: getTypedKeys(itemsData).map((itemId) => ({ itemId, price: 0 })),
-  inventory: getTypedKeys(itemsData).map((itemId) => ({ itemId, quantity: 0 }))
+  inventory: getTypedKeys(itemsData).map((itemId) => ({ itemId, quantity: 0 })),
+  inventoryCapacity: CAPACITY.default
 };
 
 function syncEntries<T extends { itemId: MetaForgeItem["id"] }>(saved: T[], defaults: T[]): T[] {
@@ -35,16 +38,22 @@ export const useItemsStore = createGlobalState(() => {
     get: () => storage.value.inventory,
     set: (data) => { storage.value.inventory = data; }
   });
+  const inventoryCapacity = computed({
+    get: () => normalizeInventoryCapacity(storage.value.inventoryCapacity),
+    set: (data) => { storage.value.inventoryCapacity = normalizeInventoryCapacity(data); }
+  });
 
   const barterPlan = computed(() => calculateBarter({
     inventory: inventory.value,
     prices: prices.value,
-    traderItems: traderItemsData
+    traderItems: traderItemsData,
+    inventoryCapacity: inventoryCapacity.value
   }));
 
   return {
     prices,
     inventory,
+    inventoryCapacity,
     barterPlan
   };
 });

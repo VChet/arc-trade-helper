@@ -12,7 +12,7 @@
       {{ item.totalCredValue }} cred
     </div>
     <div v-if="'slots' in item">
-      <icon-square-dashed title="slots" />
+      <icon-layout-grid title="slots" />
       {{ pluralize(item.slots, "slot") }}
     </div>
     <div v-if="'weight' in item">
@@ -21,7 +21,7 @@
   </item-card>
 </template>
 <script setup lang="ts">
-import { IconSeedling, IconSquareDashed, IconWeight } from "@tabler/icons-vue";
+import { IconLayoutGrid, IconSeedling, IconWeight } from "@tabler/icons-vue";
 import { getItemData } from "@/helpers/data";
 import { formatWeight, pluralize } from "@/helpers/format";
 import type { ArcPartResult, ExchangeItem, RaidItem } from "@/types/barter";

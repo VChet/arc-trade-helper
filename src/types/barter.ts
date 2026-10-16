@@ -50,6 +50,7 @@ export interface Raid {
   usedSlots: number
   totalWeight: number
   totalSeeds: number
+  capacity: number
 }
 
 export interface RaidsResult {

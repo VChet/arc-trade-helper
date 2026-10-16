@@ -1,8 +1,7 @@
+import { normalizeInventoryCapacity } from "@/helpers/capacity";
 import { getItemData } from "@/helpers/data";
 import type { Raid, RaidItem, RaidsResult } from "@/types/barter";
 import type { Item } from "@/types/item";
-
-export const RAID_SLOTS = 20;
 
 interface RaidInputItem {
   itemId: Item["id"]
@@ -10,10 +9,11 @@ interface RaidInputItem {
   seedPrice: number
 }
 
-function calculateRaids(entries: RaidInputItem[]): Raid[] {
+function calculateRaids(entries: RaidInputItem[], capacity: number): Raid[] {
   const raids: Raid[] = [];
+  const inventoryCapacity = normalizeInventoryCapacity(capacity);
 
-  let currentRaid: Raid = { items: [], usedSlots: 0, totalWeight: 0, totalSeeds: 0 };
+  let currentRaid: Raid = { items: [], usedSlots: 0, totalWeight: 0, totalSeeds: 0, capacity: inventoryCapacity };
 
   for (const { itemId, quantity, seedPrice } of entries) {
     if (quantity <= 0) continue;
@@ -24,12 +24,12 @@ function calculateRaids(entries: RaidInputItem[]): Raid[] {
     let remaining = quantity;
 
     while (remaining > 0) {
-      if (currentRaid.usedSlots === RAID_SLOTS) {
+      if (currentRaid.usedSlots === inventoryCapacity) {
         raids.push(currentRaid);
-        currentRaid = { items: [], usedSlots: 0, totalWeight: 0, totalSeeds: 0 };
+        currentRaid = { items: [], usedSlots: 0, totalWeight: 0, totalSeeds: 0, capacity: inventoryCapacity };
       }
 
-      const availableSlots = RAID_SLOTS - currentRaid.usedSlots;
+      const availableSlots = inventoryCapacity - currentRaid.usedSlots;
       const requiredSlots = Math.ceil(remaining / stackSize);
       const slotsToAdd = Math.min(availableSlots, requiredSlots);
       const quantityToAdd = Math.min(remaining, slotsToAdd * stackSize);
@@ -61,11 +61,12 @@ function calculateRaids(entries: RaidInputItem[]): Raid[] {
 interface CalculateRaidsParams {
   seedExchangeItems: RaidInputItem[]
   partsExchangeItems: RaidInputItem[]
+  capacity: number
 }
 
-export function calculateRaidPlan({ seedExchangeItems, partsExchangeItems }: CalculateRaidsParams): RaidsResult {
-  const seedExchange = calculateRaids(seedExchangeItems);
-  const partsExchange = calculateRaids(partsExchangeItems);
+export function calculateRaidPlan({ seedExchangeItems, partsExchangeItems, capacity }: CalculateRaidsParams): RaidsResult {
+  const seedExchange = calculateRaids(seedExchangeItems, capacity);
+  const partsExchange = calculateRaids(partsExchangeItems, capacity);
 
   return {
     seedExchange,

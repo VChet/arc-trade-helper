@@ -4,6 +4,7 @@
       Enter how many of each item you have in your inventory in the first field.
       Click an item's name to open its MetaForge Market page, check the market price, and enter it in the second field.
     </p>
+
     <h2>Stock and Market Prices</h2>
     <ul class="grid">
       <stock-card
@@ -14,6 +15,11 @@
         @price="setPrice(item.itemId, $event)"
       />
     </ul>
+    <label class="capacity-control">
+      <icon-layout-grid />
+      Augment capacity:
+      <input v-model.number="inventoryCapacity" type="number" :min="CAPACITY.min" :max="CAPACITY.max" step="1">
+    </label>
 
     <section>
       <h2>Exchange Items to Seeds</h2>
@@ -77,8 +83,9 @@
   </main>
 </template>
 <script setup lang="ts">
-import { IconDrone, IconSeedling, IconSeedlingOff } from "@tabler/icons-vue";
+import { IconDrone, IconLayoutGrid, IconSeedling, IconSeedlingOff } from "@tabler/icons-vue";
 import { ITEM_IDS } from "@/constants/items";
+import { CAPACITY } from "@/helpers/capacity";
 import { useItemsStore } from "@/store/items";
 import type { Item } from "@/types/item";
 import StockCard from "./cards/stock-card.vue";
@@ -86,7 +93,7 @@ import TradeCard from "./cards/trade-card.vue";
 import TraderCard from "./cards/trader-card.vue";
 import RaidList from "./raid-list.vue";
 
-const { prices, inventory, barterPlan } = useItemsStore();
+const { prices, inventory, inventoryCapacity, barterPlan } = useItemsStore();
 const priceMap = new Map(prices.value.map((item) => [item.itemId, item]));
 const itemRows = inventory.value
   .filter(({ itemId }) => itemId !== "raider-tokens" && ITEM_IDS.includes(itemId))
@@ -113,6 +120,16 @@ function setQuantity(id: Item["id"], quantity: number) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
     gap: 0.75rem;
+  }
+  .capacity-control {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+    margin-block: 0.5rem;
+    input {
+      width: 3rem;
+      text-align: center;
+    }
   }
   .summary {
     display: flex;
