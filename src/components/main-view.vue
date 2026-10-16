@@ -18,7 +18,14 @@
     <label class="capacity-control">
       <icon-layout-grid />
       Augment capacity:
-      <input v-model.number="inventoryCapacity" type="number" :min="CAPACITY.min" :max="CAPACITY.max" step="1">
+      <input
+        v-model.number="inventoryCapacity"
+        name="inventory-capacity"
+        type="number"
+        :min="CAPACITY.min"
+        :max="CAPACITY.max"
+        step="1"
+      >
     </label>
 
     <section>

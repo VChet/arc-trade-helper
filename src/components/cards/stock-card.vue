@@ -9,11 +9,11 @@
   >
     <div class="market-field">
       <icon-packages />
-      <input v-model="quantity" type="number">
+      <input v-model="quantity" :name="`quantity-${item.itemId}`" type="number">
     </div>
     <div v-if="item.itemId !== 'assorted-seeds'" class="market-field">
       <icon-seedling />
-      <input v-model="price" type="number">
+      <input v-model="price" :name="`price-${item.itemId}`" type="number">
     </div>
     <div v-if="recommendedPrice.price" class="recommended-price" :class="`confidence-${recommendedPrice.confidence}`">
       <icon-chart-histogram />
