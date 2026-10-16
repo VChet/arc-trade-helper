@@ -3,6 +3,15 @@ import { getItemData } from "./data.ts";
 import type { MetaForgeItem, MetaForgeTraderOffer } from "@/types/api";
 import type { Item, NomadTraderEntry } from "@/types/item";
 
+export function convertToMs(value: number, unit: "seconds" | "minutes" | "hours"): number {
+  const unitToMs = {
+    seconds: 1000,
+    minutes: 60 * 1000,
+    hours: 60 * 60 * 1000
+  };
+  return value * unitToMs[unit];
+}
+
 export function formatWeight(weight: number): string {
   return `${Number(weight.toFixed(1))}kg`;
 }

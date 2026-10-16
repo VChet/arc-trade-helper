@@ -1,3 +1,4 @@
+import { convertToMs } from "@/helpers/format";
 import type { MetaForgeTradeInterval } from "@/types/api";
 
 export interface RecommendedPrice {
@@ -5,19 +6,11 @@ export interface RecommendedPrice {
   confidence: "low" | "medium" | "high"
 }
 
-const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
+const SEVEN_DAYS_MS = convertToMs(7 * 24, "hours");
 const TARGET_TRADES = 10;
 const CONFIDENCE_THRESHOLDS = {
-  low: {
-    minEffectiveTrades: 5,
-    maxAgeHours: 72,
-    maxRelativeSpread: 0.5
-  },
-  high: {
-    minEffectiveTrades: 10,
-    maxAgeHours: 24,
-    maxRelativeSpread: 0.15
-  }
+  low: { minEffectiveTrades: 5, maxAgeHours: 72, maxRelativeSpread: 0.5 },
+  high: { minEffectiveTrades: 10, maxAgeHours: 24, maxRelativeSpread: 0.15 }
 };
 
 interface WeightedPrice {
@@ -28,6 +21,23 @@ interface ValidInterval {
   interval: MetaForgeTradeInterval
   quality: number
   weight: number
+}
+
+function getConfidence(effectiveTrades: number, ageHours: number, relativeSpread: number): RecommendedPrice["confidence"] {
+  const { low, high } = CONFIDENCE_THRESHOLDS;
+  if (
+    effectiveTrades < low.minEffectiveTrades ||
+    ageHours > low.maxAgeHours ||
+    relativeSpread > low.maxRelativeSpread
+  ) { return "low"; }
+
+  if (
+    effectiveTrades >= high.minEffectiveTrades &&
+    ageHours <= high.maxAgeHours &&
+    relativeSpread <= high.maxRelativeSpread
+  ) { return "high"; }
+
+  return "medium";
 }
 
 function weightedQuantile(prices: WeightedPrice[], totalWeight: number, quantile: number): number {
@@ -90,24 +100,10 @@ export function calculateRecommendedPrice(history: MetaForgeTradeInterval[]): Re
   const firstQuartile = weightedQuantile(prices, totalWeight, 0.25);
   const thirdQuartile = weightedQuantile(prices, totalWeight, 0.75);
   const relativeSpread = (thirdQuartile - firstQuartile) / price;
-  const latestAgeHours = (now - intervals[0].time) / (60 * 60 * 1000);
+  const latestAgeHours = (now - intervals[0].time) / convertToMs(1, "hours");
 
-  // Low confidence: insufficient trades, old data, wide spread
-  if (
-    effectiveTrades < CONFIDENCE_THRESHOLDS.low.minEffectiveTrades ||
-    latestAgeHours > CONFIDENCE_THRESHOLDS.low.maxAgeHours ||
-    relativeSpread > CONFIDENCE_THRESHOLDS.low.maxRelativeSpread
-  ) {
-    return { price: recommendedPrice, confidence: "low" };
-  }
-  // High confidence: sufficient trades, recent data, narrow spread
-  if (
-    effectiveTrades >= CONFIDENCE_THRESHOLDS.high.minEffectiveTrades &&
-    latestAgeHours <= CONFIDENCE_THRESHOLDS.high.maxAgeHours &&
-    relativeSpread <= CONFIDENCE_THRESHOLDS.high.maxRelativeSpread
-  ) {
-    return { price: recommendedPrice, confidence: "high" };
-  }
-
-  return { price: recommendedPrice, confidence: "medium" };
+  return {
+    price: recommendedPrice,
+    confidence: getConfidence(effectiveTrades, latestAgeHours, relativeSpread)
+  };
 }
