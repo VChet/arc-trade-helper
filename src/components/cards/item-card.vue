@@ -4,7 +4,7 @@
       <img :src="icon">
       <h3>
         {{ title }}
-        <icon-external-link v-if="clickable" />
+        <icon-external-link v-if="clickable" title="go to MetaForge Market" />
       </h3>
     </header>
     <footer v-if="slots.default">

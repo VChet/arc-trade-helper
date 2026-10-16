@@ -9,7 +9,7 @@
     clickable
   >
     <div class="market-field">
-      <icon-packages />
+      <icon-packages title="quantity in stock" />
       <input
         v-model="quantity"
         :name="`quantity-${item.itemId}`"
@@ -20,7 +20,7 @@
       >
     </div>
     <div v-if="item.itemId !== SEEDS_ID" class="market-field">
-      <icon-seedling />
+      <icon-seedling title="market price" />
       <input
         v-model="price"
         :name="`price-${item.itemId}`"
@@ -32,7 +32,7 @@
       >
     </div>
     <div v-if="recommendedPrice.price" class="recommended-price" :class="`confidence-${recommendedPrice.confidence}`">
-      <icon-chart-histogram />
+      <icon-chart-histogram title="recommended price" />
       {{ recommendedPrice.price }}
     </div>
   </item-card>

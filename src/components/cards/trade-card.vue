@@ -12,11 +12,11 @@
       {{ item.totalCredValue }} cred
     </div>
     <div v-if="'slots' in item">
-      <icon-layout-grid title="slots" />
+      <icon-layout-grid />
       {{ pluralize(item.slots, "slot") }}
     </div>
     <div v-if="'weight' in item">
-      <icon-weight title="weight" /> {{ formatWeight(item.weight) }}
+      <icon-weight /> {{ formatWeight(item.weight) }}
     </div>
   </item-card>
 </template>
