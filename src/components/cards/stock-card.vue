@@ -5,6 +5,7 @@
     :icon="data.icon"
     :title="data.name"
     :rarity="data.rarity"
+    :class="{ unavailable: !quantity }"
     clickable
   >
     <div class="market-field">
@@ -27,6 +28,7 @@
         min="0"
         max="500"
         step="1"
+        :class="{ highlight }"
       >
     </div>
     <div v-if="recommendedPrice.price" class="recommended-price" :class="`confidence-${recommendedPrice.confidence}`">
@@ -36,7 +38,7 @@
   </item-card>
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { watchDebounced } from "@vueuse/core";
 import { IconChartHistogram, IconPackages, IconSeedling } from "@tabler/icons-vue";
 import { SEEDS_ID } from "@/constants/items";
@@ -61,6 +63,13 @@ const data = getItemData(props.item.itemId);
 const quantity = ref<StockEntry["quantity"]>(props.item.quantity);
 const price = ref<StockEntry["price"]>(props.item.price);
 const recommendedPrice = ref<RecommendedPrice>({ price: null, confidence: "low" });
+const highlight = computed<boolean>(() => {
+  if (!price.value || !recommendedPrice.value.price) return false;
+  const isTooLow = price.value < recommendedPrice.value.price / 2;
+  const isTooHigh = price.value > recommendedPrice.value.price * 2;
+  return isTooLow || isTooHigh;
+}
+);
 watchDebounced(quantity, (value) => emit("quantity", value!), { debounce: 500 });
 watchDebounced(price, (value) => emit("price", value), { debounce: 500 });
 
@@ -73,8 +82,14 @@ onMounted(async () => {
 </script>
 <style>
 .stock-card {
+  &.unavailable:not(:focus-within, :hover) {
+    opacity: 0.5;
+  }
   .market-field {
     padding: 0 0 0 0.5rem;
+  }
+  .highlight {
+    color: #ffd43b;
   }
   .recommended-price {
     &.confidence-low {
