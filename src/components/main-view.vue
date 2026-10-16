@@ -2,8 +2,9 @@
   <main class="main-container">
     <h2>Stock and Market Prices</h2>
     <p>
-      Enter how many of each item you have in your inventory in the first field.
-      Click an item's name to open its MetaForge Market page, check the market price, and enter it in the second field.
+      Enter the quantity of each item you have in the first field.<br>
+      In the second field, enter your preferred price or use the recommended price from the third row.<br>
+      The recommendation's color indicates confidence based on the number of recent trades and price variability.
     </p>
     <ul class="grid">
       <stock-card

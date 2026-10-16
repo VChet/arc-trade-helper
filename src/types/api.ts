@@ -46,3 +46,14 @@ export interface MetaForgeTradersResponse extends MetaForgeResponse {
     synced_at: string
   }
 }
+
+export interface MetaForgeTradeInterval {
+  time: number
+  min_price: number
+  max_price: number
+  median_price: number
+  trade_count: number
+}
+export interface MetaForgeTradeHistoryResponse {
+  data: MetaForgeTradeInterval[]
+}

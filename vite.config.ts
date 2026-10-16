@@ -15,6 +15,13 @@ export default defineConfig({
     }
   },
   server: {
-    port: namedPort(pkg.name, { min: 7000, max: 10000 })
+    port: namedPort(pkg.name, { min: 7000, max: 10000 }),
+    proxy: {
+      "/api/metaforge": {
+        target: "https://metaforge.app",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/metaforge/, "/api/arc-raiders")
+      }
+    }
   }
 });

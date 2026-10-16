@@ -77,17 +77,15 @@ function goToMarket() {
       width: 3rem;
       height: 3rem;
     }
+    .tabler-icon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0.25rem;
+    }
   }
   &.is-clickable header {
     cursor: pointer;
-  }
-  .header-actions {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    margin: 0.25rem;
   }
   footer {
     display: flex;
