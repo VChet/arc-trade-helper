@@ -1,17 +1,13 @@
 <template>
   <main class="main-container">
-    <h2>Market Prices</h2>
+    <h2>Stock and Market Prices</h2>
     <ul class="grid">
-      <market-item v-for="item in priceItems" :key="item.itemId" :item @price="setPrice(item.itemId, $event)" />
-    </ul>
-
-    <h2>Inventory</h2>
-    <ul class="grid">
-      <inventory-item
-        v-for="item in inventoryItems"
+      <stock-card
+        v-for="item in itemRows"
         :key="item.itemId"
         :item
         @quantity="setQuantity(item.itemId, $event)"
+        @price="setPrice(item.itemId, $event)"
       />
     </ul>
 
@@ -20,7 +16,7 @@
 
       <template v-if="barterPlan.seedExchange.items.length">
         <ul class="grid">
-          <trade-item v-for="item in barterPlan.seedExchange.items" :key="item.itemId" :item />
+          <trade-card v-for="item in barterPlan.seedExchange.items" :key="item.itemId" :item />
         </ul>
 
         <raid-list :raids="barterPlan.raids.seedExchange" />
@@ -41,7 +37,7 @@
 
       <template v-if="barterPlan.partsExchange.arcParts.length">
         <ul class="grid">
-          <trade-item v-for="item in barterPlan.partsExchange.arcParts" :key="item.itemId" :item />
+          <trade-card v-for="item in barterPlan.partsExchange.arcParts" :key="item.itemId" :item />
         </ul>
 
         <raid-list :raids="barterPlan.raids.partsExchange" />
@@ -71,7 +67,7 @@
       <h2>Nomad Trader</h2>
 
       <ul class="grid">
-        <trader-item v-for="item in barterPlan.partsExchange.traderOptions" :key="item.itemId" :item />
+        <trader-card v-for="item in barterPlan.partsExchange.traderOptions" :key="item.itemId" :item />
       </ul>
     </section>
   </main>
@@ -81,15 +77,20 @@ import { IconDrone, IconSeedling, IconSeedlingOff } from "@tabler/icons-vue";
 import { ITEM_IDS } from "@/constants/items";
 import { useItemsStore } from "@/store/items";
 import type { Item } from "@/types/item";
-import InventoryItem from "./inventory-item.vue";
-import MarketItem from "./market-item.vue";
+import StockCard from "./cards/stock-card.vue";
+import TradeCard from "./cards/trade-card.vue";
+import TraderCard from "./cards/trader-card.vue";
 import RaidList from "./raid-list.vue";
-import TradeItem from "./trade-item.vue";
-import TraderItem from "./trader-item.vue";
 
 const { prices, inventory, barterPlan } = useItemsStore();
-const priceItems = prices.value.filter(({ itemId }) => !["assorted-seeds", "raider-tokens"].includes(itemId) && ITEM_IDS.includes(itemId));
-const inventoryItems = inventory.value.filter(({ itemId }) => !["raider-tokens"].includes(itemId) && ITEM_IDS.includes(itemId));
+const priceMap = new Map(prices.value.map((item) => [item.itemId, item]));
+const itemRows = inventory.value
+  .filter(({ itemId }) => itemId !== "raider-tokens" && ITEM_IDS.includes(itemId))
+  .map((inventoryItem) => {
+    const priceItem = priceMap.get(inventoryItem.itemId);
+    if (!priceItem) throw new Error(`Missing price entry for item "${inventoryItem.itemId}"`);
+    return { ...inventoryItem, ...priceItem };
+  });
 
 function setPrice(id: Item["id"], price: number) {
   const item = prices.value.find(({ itemId }) => itemId === id);
@@ -101,7 +102,6 @@ function setQuantity(id: Item["id"], quantity: number) {
 }
 </script>
 <style>
-@import url("../assets/card.css");
 .main-container {
   display: grid;
   margin-top: 1.5rem;

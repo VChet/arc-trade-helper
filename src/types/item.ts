@@ -17,6 +17,7 @@ export interface InventoryEntry {
   itemId: MetaForgeItem["id"]
   quantity: number
 }
+export type StockEntry = InventoryEntry & PriceEntry;
 export interface NomadTraderEntry {
   itemId: string
   title: MetaForgeTraderOffer["offer_title"]

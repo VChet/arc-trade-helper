@@ -15,7 +15,7 @@
     </div>
 
     <ul class="grid">
-      <trade-item v-for="item in raid.items" :key="item.itemId" :item />
+      <trade-card v-for="item in raid.items" :key="item.itemId" :item />
     </ul>
   </article>
 </template>
@@ -24,7 +24,7 @@ import { IconSeedling, IconSquareDashed, IconWeight } from "@tabler/icons-vue";
 import { formatWeight } from "@/helpers/format";
 import { RAID_SLOTS } from "@/services/barter/raids";
 import type { Raid } from "@/types/barter";
-import TradeItem from "./trade-item.vue";
+import TradeCard from "./cards/trade-card.vue";
 
 interface Props {
   raid: Raid
