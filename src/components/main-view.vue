@@ -1,11 +1,10 @@
 <template>
   <main class="main-container">
+    <h2>Stock and Market Prices</h2>
     <p>
       Enter how many of each item you have in your inventory in the first field.
       Click an item's name to open its MetaForge Market page, check the market price, and enter it in the second field.
     </p>
-
-    <h2>Stock and Market Prices</h2>
     <ul class="grid">
       <stock-card
         v-for="item in itemRows"
@@ -23,6 +22,10 @@
 
     <section>
       <h2>Exchange Items to Seeds</h2>
+      <p>
+        Items with a market price are included in this estimate. Enter prices above to see how many seeds they are
+        worth.
+      </p>
 
       <template v-if="barterPlan.seedExchange.items.length">
         <ul class="grid">
@@ -31,19 +34,23 @@
 
         <raid-list :raids="barterPlan.raids.seedExchange" />
 
-        <div class="summary">
+        <p>
           <icon-seedling />
           Seeds after exchange: {{ barterPlan.seedExchange.availableSeeds }}
-        </div>
+        </p>
       </template>
 
-      <p v-else class="summary">
+      <p v-else>
         No items to exchange for seeds
       </p>
     </section>
 
     <section>
       <h2>Exchange Seeds to Arc Parts</h2>
+      <p>
+        Arc Parts you can buy with your available seeds. The plan chooses the combination with
+        the highest total value.
+      </p>
 
       <template v-if="barterPlan.partsExchange.arcParts.length">
         <ul class="grid">
@@ -52,23 +59,21 @@
 
         <raid-list :raids="barterPlan.raids.partsExchange" />
 
-        <div class="summary">
-          <div>
-            <icon-seedling-off />
-            Seeds spent: {{ barterPlan.partsExchange.spentSeeds }}
-          </div>
-          <div>
-            <icon-seedling />
-            Seeds remaining: {{ barterPlan.partsExchange.remainingSeeds }}
-          </div>
-          <div>
-            <icon-drone />
-            Arc Parts value: {{ barterPlan.partsExchange.totalCredValue }} cred
-          </div>
-        </div>
+        <p>
+          <icon-seedling-off />
+          Seeds spent: {{ barterPlan.partsExchange.spentSeeds }}
+        </p>
+        <p>
+          <icon-seedling />
+          Seeds remaining: {{ barterPlan.partsExchange.remainingSeeds }}
+        </p>
+        <p>
+          <icon-drone />
+          Arc Parts value: {{ barterPlan.partsExchange.totalCredValue }} cred
+        </p>
       </template>
 
-      <p v-else class="summary">
+      <p v-else>
         No Arc Parts to purchase
       </p>
     </section>
@@ -116,6 +121,9 @@ function setQuantity(id: Item["id"], quantity: number) {
 .main-container {
   display: grid;
   margin-top: 1.5rem;
+  p {
+    margin-block: 0.5rem;
+  }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
