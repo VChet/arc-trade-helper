@@ -1,5 +1,16 @@
 <template>
   <main class="main-container">
+    <div class="links">
+      <a href="https://metaforge.app/arc-raiders/market/my-listings" target="_blank">
+        <icon-package />
+        My Listings
+      </a>
+      <a href="https://metaforge.app/arc-raiders/market/messages" target="_blank">
+        <icon-message-circle />
+        Messages
+      </a>
+    </div>
+
     <h2>Stock and Market Prices</h2>
     <p>
       Enter the quantity of each item you have in the first field.<br>
@@ -96,7 +107,14 @@
   </main>
 </template>
 <script setup lang="ts">
-import { IconDrone, IconLayoutGrid, IconSeedling, IconSeedlingOff } from "@tabler/icons-vue";
+import {
+  IconDrone,
+  IconLayoutGrid,
+  IconMessageCircle,
+  IconPackage,
+  IconSeedling,
+  IconSeedlingOff
+} from "@tabler/icons-vue";
 import { ITEM_IDS, TOKENS_ID } from "@/constants/items";
 import { CAPACITY } from "@/helpers/capacity";
 import { useItemsStore } from "@/store/items";
@@ -131,6 +149,20 @@ function setQuantity(id: Item["id"], quantity: number) {
   margin-top: 1.5rem;
   p {
     margin-block: 0.5rem;
+  }
+  .links {
+    display: flex;
+    gap: 0.5rem;
+    a {
+      padding: 0.5rem 0.75rem;
+      background: var(--card);
+      border: 1px solid var(--base-dimmed);
+      border-radius: var(--radius);
+      &:hover, &:focus-visible {
+        text-decoration: none;
+        background: var(--base-dimmed);
+      }
+    }
   }
   .grid {
     display: grid;
