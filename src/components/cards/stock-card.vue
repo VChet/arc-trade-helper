@@ -6,7 +6,7 @@
     :title="data.name"
     :rarity="data.rarity"
     :class="{ unavailable: !quantity }"
-    clickable
+    :clickable="item.itemId !== SEEDS_ID"
   >
     <div class="market-field">
       <icon-packages title="quantity in stock" />
