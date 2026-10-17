@@ -3,6 +3,7 @@ import type { MetaForgeTradeInterval } from "@/types/api";
 
 interface Metrics {
   tradeCount: number
+  /** value in ms */
   latestInterval: number
   spread: number
 }
@@ -15,8 +16,8 @@ export interface RecommendedPrice {
 const SEVEN_DAYS_MS = convertToMs(7 * 24, "hours");
 const MIN_SAMPLE_TRADE_COUNT = 10;
 const CONFIDENCE_THRESHOLDS = {
-  low: { minEffectiveTradeCount: 5, maxAgeHours: 72, maxRelativeSpread: 0.5 },
-  high: { minEffectiveTradeCount: 10, maxAgeHours: 24, maxRelativeSpread: 0.15 }
+  low: { minEffectiveTradeCount: 5, maxAge: convertToMs(72, "hours"), maxRelativeSpread: 0.5 },
+  high: { minEffectiveTradeCount: 10, maxAge: convertToMs(24, "hours"), maxRelativeSpread: 0.15 }
 };
 
 interface WeightedPrice {
@@ -24,17 +25,17 @@ interface WeightedPrice {
   weight: number
 }
 
-function getConfidence(effectiveTradeCount: number, ageHours: number, relativeSpread: number): RecommendedPrice["confidence"] {
+function getConfidence(effectiveTradeCount: number, age: number, relativeSpread: number): RecommendedPrice["confidence"] {
   const { low, high } = CONFIDENCE_THRESHOLDS;
   if (
     effectiveTradeCount < low.minEffectiveTradeCount ||
-    ageHours > low.maxAgeHours ||
+    age > low.maxAge ||
     relativeSpread > low.maxRelativeSpread
   ) { return "low"; }
 
   if (
     effectiveTradeCount >= high.minEffectiveTradeCount &&
-    ageHours <= high.maxAgeHours &&
+    age <= high.maxAge &&
     relativeSpread <= high.maxRelativeSpread
   ) { return "high"; }
 
@@ -99,11 +100,11 @@ export function calculateRecommendedPrice(history: MetaForgeTradeInterval[]): Re
   const [firstQuartile, price, thirdQuartile] = weightedQuantiles(prices, totalEffectiveTradeCount);
   const recommendedPrice = Math.round(price);
   const relativeSpread = (thirdQuartile - firstQuartile) / price;
-  const latestAgeHours = (now - intervals[0].time) / convertToMs(1, "hours");
+  const latestInterval = now - intervals[0].time;
 
   return {
     price: recommendedPrice,
-    metrics: { tradeCount: sampleTradeCount, latestInterval: latestAgeHours, spread: relativeSpread },
-    confidence: getConfidence(totalEffectiveTradeCount, latestAgeHours, relativeSpread)
+    metrics: { tradeCount: sampleTradeCount, latestInterval, spread: relativeSpread },
+    confidence: getConfidence(totalEffectiveTradeCount, latestInterval, relativeSpread)
   };
 }

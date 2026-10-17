@@ -24,8 +24,8 @@ export function pluralize(count: number, word: string): string {
   return `${count} ${count === 1 ? word : `${word}s`}`;
 }
 
-export function formatHoursAndMinutes(hours: number): string {
-  const totalMinutes = Math.floor(hours * 60);
+export function formatHoursAndMinutes(milliseconds: number): string {
+  const totalMinutes = Math.floor(milliseconds / convertToMs(1, "minutes"));
   const formattedHours = Math.floor(totalMinutes / 60);
   const formattedMinutes = totalMinutes % 60;
   const parts = [];
