@@ -31,18 +31,24 @@
         :class="{ highlight }"
       >
     </div>
-    <div v-if="recommendedPrice.price" class="recommended-price" :class="`confidence-${recommendedPrice.confidence}`">
-      <icon-chart-histogram title="recommended price" />
+    <div
+      v-if="recommendedPrice.price && recommendedPrice.metrics"
+      class="recommended-price"
+      :class="`confidence-${recommendedPrice.confidence}`"
+      :title="recommendedPriceTooltip"
+    >
+      <icon-chart-histogram />
       {{ recommendedPrice.price }}
     </div>
   </item-card>
 </template>
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, type HTMLAttributes } from "vue";
 import { watchDebounced } from "@vueuse/core";
 import { IconChartHistogram, IconPackages, IconSeedling } from "@tabler/icons-vue";
 import { SEEDS_ID } from "@/constants/items";
 import { getItemData } from "@/helpers/data";
+import { formatHoursAndMinutes, formatNumber } from "@/helpers/format";
 import { calculateRecommendedPrice, type RecommendedPrice } from "@/helpers/recommended-price";
 import { fetchPriceHistory } from "@/services/meta-forge";
 import type { StockEntry } from "@/types/item";
@@ -62,7 +68,16 @@ const data = getItemData(props.item.itemId);
 
 const quantity = ref<StockEntry["quantity"]>(props.item.quantity);
 const price = ref<StockEntry["price"]>(props.item.price);
-const recommendedPrice = ref<RecommendedPrice>({ price: null, confidence: "low" });
+const recommendedPrice = ref<RecommendedPrice>({ price: null, metrics: null, confidence: "low" });
+const recommendedPriceTooltip = computed<HTMLAttributes["title"]>(() => {
+  const { metrics } = recommendedPrice.value;
+  if (!metrics) return undefined;
+  return [
+    `Trades: ${metrics.tradeCount}`,
+    `Latest interval: ${formatHoursAndMinutes(metrics.latestInterval)} ago`,
+    `Spread: ${formatNumber(metrics.spread * 100)}%`
+  ].join("\n");
+});
 const highlight = computed<boolean>(() => {
   if (!price.value || !recommendedPrice.value.price) return false;
   const isTooLow = price.value < recommendedPrice.value.price / 2;

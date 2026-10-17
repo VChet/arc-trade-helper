@@ -1,8 +1,14 @@
 import { convertToMs } from "@/helpers/format";
 import type { MetaForgeTradeInterval } from "@/types/api";
 
+interface Metrics {
+  tradeCount: number
+  latestInterval: number
+  spread: number
+}
 export interface RecommendedPrice {
   price: number | null
+  metrics: Metrics | null
   confidence: "low" | "medium" | "high"
 }
 
@@ -70,7 +76,7 @@ export function calculateRecommendedPrice(history: MetaForgeTradeInterval[]): Re
     trade_count > 0
   ).sort((a, b) => b.time - a.time);
 
-  if (!intervals.length) return { price: null, confidence: "low" };
+  if (!intervals.length) return { price: null, metrics: null, confidence: "low" };
 
   const prices: WeightedPrice[] = [];
   let sampleTradeCount = 0;
@@ -86,7 +92,7 @@ export function calculateRecommendedPrice(history: MetaForgeTradeInterval[]): Re
     if (sampleTradeCount >= MIN_SAMPLE_TRADE_COUNT) break;
   }
 
-  if (!prices.length) return { price: null, confidence: "low" };
+  if (!prices.length) return { price: null, metrics: null, confidence: "low" };
 
   // Use the middle price as the recommendation and price spread to set confidence
   prices.sort((a, b) => a.price - b.price);
@@ -97,6 +103,7 @@ export function calculateRecommendedPrice(history: MetaForgeTradeInterval[]): Re
 
   return {
     price: recommendedPrice,
+    metrics: { tradeCount: sampleTradeCount, latestInterval: latestAgeHours, spread: relativeSpread },
     confidence: getConfidence(totalEffectiveTradeCount, latestAgeHours, relativeSpread)
   };
 }

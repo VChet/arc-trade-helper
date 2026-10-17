@@ -12,12 +12,28 @@ export function convertToMs(value: number, unit: "seconds" | "minutes" | "hours"
   return value * unitToMs[unit];
 }
 
+export function formatNumber(value: number, decimals = 1): string {
+  return Number(value.toFixed(decimals)).toString();
+}
+
 export function formatWeight(weight: number): string {
-  return `${Number(weight.toFixed(1))}kg`;
+  return `${formatNumber(weight)}kg`;
 }
 
 export function pluralize(count: number, word: string): string {
   return `${count} ${count === 1 ? word : `${word}s`}`;
+}
+
+export function formatHoursAndMinutes(hours: number): string {
+  const totalMinutes = Math.floor(hours * 60);
+  const formattedHours = Math.floor(totalMinutes / 60);
+  const formattedMinutes = totalMinutes % 60;
+  const parts = [];
+
+  if (formattedHours) parts.push(pluralize(formattedHours, "hour"));
+  if (formattedMinutes || !formattedHours) parts.push(pluralize(formattedMinutes, "minute"));
+
+  return parts.join(", ");
 }
 
 export function formatItemData(payload: MetaForgeItem): Item {
