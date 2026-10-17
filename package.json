@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "fetch": "node src/services/fetch.ts",
     "preview": "vite preview",
     "lint:ts": "vue-tsc",
     "lint:js": "eslint .",
