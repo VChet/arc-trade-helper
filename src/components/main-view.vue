@@ -78,17 +78,13 @@
 
         <raid-list :raids="barterPlan.raids.partsExchange" />
 
-        <p>
+        <p class="summary">
           <icon-seedling-off />
           Seeds spent: {{ barterPlan.partsExchange.spentSeeds }}
         </p>
-        <p>
+        <p class="summary">
           <icon-seedling />
           Seeds remaining: {{ barterPlan.partsExchange.remainingSeeds }}
-        </p>
-        <p>
-          <icon-drone />
-          Arc Parts value: {{ barterPlan.partsExchange.totalCredValue }} cred
         </p>
       </template>
 
@@ -99,6 +95,11 @@
 
     <section>
       <h2>Nomad Trader</h2>
+
+      <p class="summary">
+        <icon-drone />
+        Arc Parts value: {{ barterPlan.partsExchange.totalCredValue }} cred
+      </p>
 
       <h3>Offers</h3>
       <ul class="grid">
