@@ -45,11 +45,15 @@ export interface RaidItem {
   slots: number
 }
 
-export interface Raid {
+export interface TradeSide {
   items: RaidItem[]
   usedSlots: number
   totalWeight: number
-  totalSeeds: number
+}
+
+export interface Raid {
+  give: TradeSide
+  receive: TradeSide
   capacity: number
 }
 

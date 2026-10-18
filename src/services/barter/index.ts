@@ -8,10 +8,10 @@ interface CalculateBarterParams {
   inventory: InventoryEntry[]
   prices: PriceEntry[]
   traderItems: NomadTraderEntry[]
-  inventoryCapacity: number
+  augmentCapacity: number
 }
 
-export function calculateBarter({ inventory, prices, traderItems, inventoryCapacity }: CalculateBarterParams): BarterPlan {
+export function calculateBarter({ inventory, prices, traderItems, augmentCapacity }: CalculateBarterParams): BarterPlan {
   // Stage 1: exchange regular items for seeds
   const seedExchange = calculateSeedExchange({ inventory, prices });
   // Stage 2: use the available seed budget to buy Arc Parts
@@ -25,7 +25,7 @@ export function calculateBarter({ inventory, prices, traderItems, inventoryCapac
   const raids = calculateRaidPlan({
     seedExchangeItems: seedExchange.items,
     partsExchangeItems: partsExchange.arcParts,
-    capacity: inventoryCapacity
+    capacity: augmentCapacity
   });
 
   return {

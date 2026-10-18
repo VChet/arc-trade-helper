@@ -30,7 +30,7 @@
       <icon-layout-grid />
       Augment capacity:
       <input
-        v-model.number="inventoryCapacity"
+        v-model.number="augmentCapacity"
         name="inventory-capacity"
         type="number"
         :min="CAPACITY.min"
@@ -124,7 +124,7 @@ import TradeCard from "./cards/trade-card.vue";
 import TraderCard from "./cards/trader-card.vue";
 import RaidList from "./raid-list.vue";
 
-const { prices, inventory, inventoryCapacity, barterPlan } = useItemsStore();
+const { prices, inventory, augmentCapacity, barterPlan } = useItemsStore();
 const priceMap = new Map(prices.value.map((item) => [item.itemId, item]));
 const itemRows = inventory.value
   .filter(({ itemId }) => itemId !== TOKENS_ID && ITEM_IDS.includes(itemId))
@@ -166,7 +166,7 @@ function setQuantity(id: Item["id"], quantity: number) {
   }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
     gap: 0.75rem;
   }
   .capacity-control {
