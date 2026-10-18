@@ -22,7 +22,7 @@ export async function fetchPriceHistory(itemId: MetaForgeItem["id"]) {
   return response.data;
 }
 
-export async function fetchNomadItems() {
+export async function fetchNomadTrader() {
   const response = await request<MetaForgeTradersResponse>(API.traders);
-  return response.ermal.offers;
+  return response.ermal;
 }

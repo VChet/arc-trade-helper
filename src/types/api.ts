@@ -30,19 +30,27 @@ export interface MetaForgeItemsResponse extends MetaForgeResponse {
   }
 }
 
+interface MetaForgeAcceptedItem {
+  [key: string]: unknown
+  id: string
+}
 export interface MetaForgeTraderOffer {
   id: string
   offer_title: string
   coin_cost: number
-  accepted_items: {
-    [key: string]: unknown
-    id: string
-  }[]
+  accepted_items: MetaForgeAcceptedItem[]
   item: Pick<MetaForgeItem, "id" | "name" | "rarity" | "icon" | "value"> | null
+}
+export interface MetaForgeTraderService {
+  id: string
+  name: string
+  coin_cost: number
+  accepted_items: MetaForgeAcceptedItem[]
 }
 export interface MetaForgeTradersResponse extends MetaForgeResponse {
   ermal: {
     offers: MetaForgeTraderOffer[]
+    permanent_services: MetaForgeTraderService[]
     synced_at: string
   }
 }

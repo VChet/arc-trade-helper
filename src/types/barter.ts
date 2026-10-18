@@ -1,4 +1,4 @@
-import type { InventoryEntry, Item, NomadTraderEntry, PriceEntry } from "@/types/item";
+import type { InventoryEntry, Item, PriceEntry } from "@/types/item";
 
 export interface ExchangeItem {
   itemId: Item["id"]
@@ -17,10 +17,6 @@ export interface ArcPartResult {
   totalCredValue: number
 }
 
-export interface TraderOption extends NomadTraderEntry {
-  affordableBundles: number
-}
-
 export interface SeedExchangeResult {
   existingSeeds: number
   items: ExchangeItem[]
@@ -34,7 +30,6 @@ export interface PartsExchangeResult {
   spentSeeds: number
   remainingSeeds: number
   totalCredValue: number
-  traderOptions: TraderOption[]
 }
 
 export interface RaidItem {
@@ -77,5 +72,4 @@ export interface PartsExchangeParams {
   inventory: InventoryEntry[]
   prices: PriceEntry[]
   seedBudget: number
-  traderItems: NomadTraderEntry[]
 }

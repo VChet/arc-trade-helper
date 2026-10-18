@@ -4,7 +4,6 @@ import { CAPACITY, normalizeCapacity } from "@/helpers/capacity";
 import { getTypedKeys } from "@/helpers/object";
 import { calculateBarter } from "@/services/barter";
 import itemsData from "../data/items.json" with { type: "json" };
-import traderItemsData from "../data/nomad-trader.json" with { type: "json" };
 import type { MetaForgeItem } from "@/types/api";
 import type { InventoryEntry, PriceEntry } from "@/types/item";
 
@@ -46,7 +45,6 @@ export const useItemsStore = createGlobalState(() => {
   const barterPlan = computed(() => calculateBarter({
     inventory: inventory.value,
     prices: prices.value,
-    traderItems: traderItemsData,
     augmentCapacity: augmentCapacity.value
   }));
 

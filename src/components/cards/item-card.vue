@@ -1,7 +1,7 @@
 <template>
-  <li class="item-card" :class="[rarity.toLowerCase(), { 'is-clickable': clickable }]">
+  <li class="item-card" :class="[rarity?.toLowerCase()]">
     <header @click="clickable && goToMarket()">
-      <img :src="icon">
+      <img v-if="icon" :src="icon">
       <h3>
         {{ title }}
         <icon-external-link v-if="clickable" title="go to MetaForge Market" />
@@ -18,10 +18,10 @@ import { IconExternalLink } from "@tabler/icons-vue";
 import type { Item } from "@/types/item";
 
 interface Props {
-  rarity: Item["rarity"]
-  icon: Item["icon"]
   title: string
   id: string
+  icon?: Item["icon"]
+  rarity?: Item["rarity"]
   clickable?: boolean
 }
 interface Slots {
@@ -39,7 +39,6 @@ function goToMarket() {
 </script>
 <style>
 .item-card {
-  --rarity-color: #6c6c6c;
   display: grid;
   overflow: hidden;
   font-size: 0.875rem;
@@ -50,6 +49,9 @@ function goToMarket() {
   &:hover,
   &:focus-within {
     border-color: var(--base);
+  }
+  &.common {
+    --rarity-color: #6c6c6c;
   }
   &.uncommon {
     --rarity-color: #26bf57;
@@ -68,14 +70,17 @@ function goToMarket() {
   }
   header {
     position: relative;
-    display: grid;
-    grid-template-columns: min-content 1fr;
-    place-items: center;
+    display: flex;
+    align-items: center;
     background: linear-gradient(to right, var(--rarity-color), var(--card) 30%);
     border-bottom: 1px solid var(--base-dimmed);
     img {
       width: 3rem;
       height: 3rem;
+    }
+    h3 {
+      flex: 1;
+      text-align: center;
     }
     .tabler-icon {
       position: absolute;

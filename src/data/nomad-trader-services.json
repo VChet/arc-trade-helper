@@ -1,0 +1,12 @@
+[
+  {
+    "id": "expedition-vault",
+    "name": "Expedition Vault",
+    "price": 200000
+  },
+  {
+    "id": "stash-expansion",
+    "name": "Stash Expansion",
+    "price": 200000
+  }
+]

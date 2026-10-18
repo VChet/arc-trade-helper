@@ -3,8 +3,8 @@ import { dirname, join } from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
 import { ITEM_IDS, RARITY_ORDER } from "../constants/items.ts";
-import { formatItemData, formatTraderOffer } from "../helpers/format.ts";
-import { fetchItems, fetchNomadItems } from "./meta-forge.ts";
+import { formatItemData, formatTraderOffer, formatTraderService } from "../helpers/format.ts";
+import { fetchItems, fetchNomadTrader } from "./meta-forge.ts";
 import type { Item } from "@/types/item";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -25,14 +25,23 @@ async function fetchItemsData(ids: string[]) {
   return sortedItems.length;
 }
 async function fetchTradersData() {
-  const path = join(OUTPUT_PATH, "nomad-trader.json");
-  const offersData = await fetchNomadItems();
-  const sortedItems = offersData
+  const { offers, permanent_services } = await fetchNomadTrader();
+  // Offers
+  const offersPath = join(OUTPUT_PATH, "nomad-trader-offers.json");
+  const sortedItems = offers
     .map(formatTraderOffer)
     .filter(Boolean)
     .sort((a, b) => RARITY_ORDER[a.rarity] - RARITY_ORDER[b.rarity]);
-  const content = JSON.stringify(sortedItems, null, 2);
-  await writeFile(path, `${content}\n`, "utf8");
+  const offersContent = JSON.stringify(sortedItems, null, 2);
+  await writeFile(offersPath, `${offersContent}\n`, "utf8");
+  // Services
+  const servicesPath = join(OUTPUT_PATH, "nomad-trader-services.json");
+  const services = permanent_services
+    .map(formatTraderService)
+    .filter(Boolean);
+  const servicesContent = JSON.stringify(services, null, 2);
+  await writeFile(servicesPath, `${servicesContent}\n`, "utf8");
+  // Return trader item ids
   return sortedItems.map((item) => item.itemId);
 }
 async function main() {

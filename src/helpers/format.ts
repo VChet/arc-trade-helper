@@ -1,7 +1,7 @@
 import { ARC_PART_IDS, TOKENS_ID } from "../constants/items.ts";
 import { getItemData } from "./data.ts";
-import type { MetaForgeItem, MetaForgeTraderOffer } from "@/types/api";
-import type { Item, NomadTraderEntry } from "@/types/item";
+import type { MetaForgeItem, MetaForgeTraderOffer, MetaForgeTraderService } from "@/types/api";
+import type { Item, NomadTraderOffer, NomadTraderService } from "@/types/item";
 
 export function convertToMs(value: number, unit: "seconds" | "minutes" | "hours"): number {
   const unitToMs = {
@@ -48,7 +48,7 @@ export function formatItemData(payload: MetaForgeItem): Item {
   };
 }
 
-export function formatTraderOffer(payload: MetaForgeTraderOffer): NomadTraderEntry | null {
+export function formatTraderOffer(payload: MetaForgeTraderOffer): NomadTraderOffer | null {
   const needsArcParts = payload.accepted_items.some((item) => ARC_PART_IDS.includes(item.id));
   if (!needsArcParts) return null;
   const fallback = getItemData(TOKENS_ID) as Item;
@@ -57,6 +57,15 @@ export function formatTraderOffer(payload: MetaForgeTraderOffer): NomadTraderEnt
     title: payload.offer_title,
     rarity: payload.item?.rarity ?? fallback.rarity,
     icon: payload.item?.icon ?? fallback.icon,
+    price: payload.coin_cost
+  };
+}
+export function formatTraderService(payload: MetaForgeTraderService): NomadTraderService | null {
+  const needsArcParts = payload.accepted_items.some((item) => ARC_PART_IDS.includes(item.id));
+  if (!needsArcParts) return null;
+  return {
+    id: payload.id,
+    name: payload.name,
     price: payload.coin_cost
   };
 }

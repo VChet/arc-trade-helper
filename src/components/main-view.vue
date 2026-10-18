@@ -100,8 +100,24 @@
     <section>
       <h2>Nomad Trader</h2>
 
+      <h3>Offers</h3>
       <ul class="grid">
-        <trader-card v-for="item in barterPlan.partsExchange.traderOptions" :key="item.itemId" :item />
+        <trader-card
+          v-for="item in traderItems"
+          :key="item.itemId"
+          :item
+          :cred-value="barterPlan.partsExchange.totalCredValue"
+        />
+      </ul>
+
+      <h3>Services</h3>
+      <ul class="grid">
+        <service-card
+          v-for="service in traderServices"
+          :key="service.id"
+          :service
+          :cred-value="barterPlan.partsExchange.totalCredValue"
+        />
       </ul>
     </section>
   </main>
@@ -118,7 +134,10 @@ import {
 import { ITEM_IDS, TOKENS_ID } from "@/constants/items";
 import { CAPACITY } from "@/helpers/capacity";
 import { useItemsStore } from "@/store/items";
+import traderItems from "../data/nomad-trader-offers.json" with { type: "json" };
+import traderServices from "../data/nomad-trader-services.json" with { type: "json" };
 import type { Item } from "@/types/item";
+import ServiceCard from "./cards/service-card.vue";
 import StockCard from "./cards/stock-card.vue";
 import TradeCard from "./cards/trade-card.vue";
 import TraderCard from "./cards/trader-card.vue";

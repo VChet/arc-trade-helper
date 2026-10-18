@@ -1,11 +1,9 @@
 import { ARC_PART_IDS } from "@/constants/items";
 import { getItemData } from "@/helpers/data";
-import type { ArcPartResult, PartsExchangeParams, PartsExchangeResult, TraderOption } from "@/types/barter";
+import type { ArcPartResult, PartsExchangeParams, PartsExchangeResult } from "@/types/barter";
 import type { Item } from "@/types/item";
 
-export function calculatePartsExchange(
-  { inventory, prices, seedBudget, traderItems }: PartsExchangeParams
-): PartsExchangeResult {
+export function calculatePartsExchange({ inventory, prices, seedBudget }: PartsExchangeParams): PartsExchangeResult {
   const priceMap = new Map(prices.map(({ itemId, price }) => [itemId, price]));
 
   const existingArcParts: ArcPartResult[] = [];
@@ -94,24 +92,11 @@ export function calculatePartsExchange(
   const purchasedCredValue = arcParts.reduce((acc, part) => acc + part.totalCredValue, 0);
   const totalCredValue = existingCredValue + purchasedCredValue;
 
-  const traderOptions: TraderOption[] = traderItems.map((offer) => {
-    const affordableBundles = offer.price > 0 ? Math.floor(totalCredValue / offer.price) : 0;
-    return {
-      itemId: offer.itemId,
-      title: offer.title,
-      rarity: offer.rarity,
-      icon: offer.icon,
-      price: offer.price,
-      affordableBundles
-    };
-  });
-
   return {
     existingArcParts,
     arcParts,
     spentSeeds: bestSpent,
     remainingSeeds: seedBudget - bestSpent,
-    totalCredValue,
-    traderOptions
+    totalCredValue
   };
 }
