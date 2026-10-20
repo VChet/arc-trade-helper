@@ -3,6 +3,7 @@ name: Fetch data
 on:
   schedule:
     - cron: "0 13 * * 2"
+  workflow_dispatch:
 
 jobs:
   fetch:
