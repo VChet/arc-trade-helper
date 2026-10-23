@@ -1,6 +1,10 @@
 <template>
   <main class="main-container">
     <div class="links">
+      <a href="https://metaforge.app/arc-raiders/market" target="_blank">
+        <icon-building-store />
+        Marketplace
+      </a>
       <a href="https://metaforge.app/arc-raiders/market/my-listings" target="_blank">
         <icon-package />
         My Listings
@@ -125,6 +129,7 @@
 </template>
 <script setup lang="ts">
 import {
+  IconBuildingStore,
   IconDrone,
   IconLayoutGrid,
   IconMessageCircle,
