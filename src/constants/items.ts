@@ -19,8 +19,8 @@ export const ITEM_IDS = [
   ...ARC_PART_IDS,
   SEEDS_ID,
   TOKENS_ID,
-  "bobcat-iv",
-  "familiar-duck",
+  "fossilized-lightning",
+  "sentinel-part",
   "showstopper",
   "snap-hook"
 ] as const satisfies readonly Item["id"][];

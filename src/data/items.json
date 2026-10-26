@@ -17,6 +17,15 @@
     "stackSize": 100,
     "credValue": 100
   },
+  "sentinel-part": {
+    "id": "sentinel-part",
+    "name": "Sentinel Firing Core",
+    "rarity": "Rare",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/e5ed547883345a82c18c499dea0a5c2cb3eb04b361d4ee277ede460910116e11.png",
+    "weight": 1,
+    "stackSize": 3,
+    "credValue": 2000
+  },
   "showstopper": {
     "id": "showstopper",
     "name": "Showstopper",
@@ -107,23 +116,14 @@
     "stackSize": 3,
     "credValue": 6000
   },
-  "bobcat-iv": {
-    "id": "bobcat-iv",
-    "name": "Bobcat IV",
+  "fossilized-lightning": {
+    "id": "fossilized-lightning",
+    "name": "Fossilized Lightning",
     "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/41effd20b3bd61678406ac46591c9acc12c5da364234150d1a6a334f46e57545.png",
-    "weight": 7,
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/042ca30b6c7b7cbe0fddf9357018404aa6d7c7528b662c04a8c460dd3baabfbb.png",
+    "weight": 0.25,
     "stackSize": 1,
-    "credValue": 27000
-  },
-  "familiar-duck": {
-    "id": "familiar-duck",
-    "name": "Familiar Duck",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/61c779fcb9ab509bd6fc850992124d4c8a7b23d39a267a258424a745d9d60cad.png",
-    "weight": 0.3,
-    "stackSize": 15,
-    "credValue": 7000
+    "credValue": 4000
   },
   "kinetic-converter": {
     "id": "kinetic-converter",
