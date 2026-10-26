@@ -15,33 +15,35 @@
       </a>
     </div>
 
-    <h2>Stock and Market Prices</h2>
-    <p>
-      Enter the quantity of each item you have in the first field.<br>
-      In the second field, enter your preferred price or use the recommended price from the third row.<br>
-      The recommendation's color indicates confidence based on the number of recent trades and price variability.
-    </p>
-    <ul class="grid">
-      <stock-card
-        v-for="item in itemRows"
-        :key="item.itemId"
-        :item
-        @quantity="setQuantity(item.itemId, $event)"
-        @price="setPrice(item.itemId, $event)"
-      />
-    </ul>
-    <label class="capacity-control">
-      <icon-layout-grid />
-      Augment capacity:
-      <input
-        v-model.number="augmentCapacity"
-        name="inventory-capacity"
-        type="number"
-        :min="CAPACITY.min"
-        :max="CAPACITY.max"
-        step="1"
-      >
-    </label>
+    <section>
+      <h2>Stock and Market Prices</h2>
+      <p>
+        Enter the quantity of each item you have in the first field.<br>
+        In the second field, enter your preferred price or use the recommended price from the third row.<br>
+        The recommendation's color indicates confidence based on the number of recent trades and price variability.
+      </p>
+      <ul class="grid">
+        <stock-card
+          v-for="item in itemRows"
+          :key="item.itemId"
+          :item
+          @quantity="setQuantity(item.itemId, $event)"
+          @price="setPrice(item.itemId, $event)"
+        />
+      </ul>
+      <label class="capacity-control">
+        <icon-layout-grid />
+        Augment capacity:
+        <input
+          v-model.number="augmentCapacity"
+          name="inventory-capacity"
+          type="number"
+          :min="CAPACITY.min"
+          :max="CAPACITY.max"
+          step="1"
+        >
+      </label>
+    </section>
 
     <section>
       <h2>Exchange Items to Seeds</h2>
@@ -173,7 +175,7 @@ function setQuantity(id: Item["id"], quantity: number) {
   display: grid;
   margin-top: 1.5rem;
   p {
-    margin-block: 0.5rem;
+    margin-block: 0.75rem;
   }
   .links {
     display: flex;
@@ -191,7 +193,7 @@ function setQuantity(id: Item["id"], quantity: number) {
   }
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
     gap: 0.75rem;
   }
   .capacity-control {

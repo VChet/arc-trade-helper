@@ -5,3 +5,10 @@
   src: local("Barlow"), url("/fonts/Barlow-Regular.woff2") format("woff2");
   font-display: swap;
 }
+@font-face {
+  font-family: "Barlow Semi Condensed";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/Barlow-Semi-Condensed.woff2") format("woff2");
+  font-display: swap;
+}
