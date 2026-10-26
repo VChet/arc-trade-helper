@@ -1,6 +1,6 @@
 <template>
-  <li class="item-card" :class="[rarity?.toLowerCase()]">
-    <header @click="clickable && goToMarket()">
+  <li class="item-card" :class="rarity?.toLowerCase()">
+    <header :class="{ clickable }" @click="clickable && goToMarket()">
       <img v-if="icon" :src="icon">
       <h3>
         {{ title }}
@@ -74,6 +74,9 @@ function goToMarket() {
     align-items: center;
     background: linear-gradient(to right, var(--rarity-color), var(--card) 30%);
     border-bottom: 1px solid var(--base-dimmed);
+    &.clickable {
+      cursor: pointer;
+    }
     img {
       width: 3rem;
       height: 3rem;
@@ -88,9 +91,6 @@ function goToMarket() {
       right: 0;
       margin: 0.25rem;
     }
-  }
-  &.is-clickable header {
-    cursor: pointer;
   }
   footer {
     display: flex;
