@@ -80,6 +80,15 @@
     "stackSize": 3,
     "credValue": 3000
   },
+  "bully-fragmenter": {
+    "id": "bully-fragmenter",
+    "name": "Bully Fragmenter",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20261007/221acfd4489c3de66410527a60d71aa2e00830490b7537d7388dc25e62eea689.png",
+    "weight": 0.4,
+    "stackSize": 3,
+    "credValue": 5000
+  },
   "leaper-pulse-unit": {
     "id": "leaper-pulse-unit",
     "name": "Leaper Pulse Unit",

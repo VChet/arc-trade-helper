@@ -7,6 +7,7 @@ export const ARC_PART_IDS = [
   "assessor-matrix",
   "bastion-part",
   "bombardier-cell",
+  "bully-fragmenter",
   "leaper-pulse-unit",
   "matriarch-reactor",
   "queen-reactor",
