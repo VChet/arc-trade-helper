@@ -35,15 +35,6 @@
     "stackSize": 5,
     "credValue": 2100
   },
-  "deadline": {
-    "id": "deadline",
-    "name": "Deadline",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8af3c45402fe1d383e6eeb175d17b566b7622c0488543f3dccc8479724307410.png",
-    "weight": 1,
-    "stackSize": 1,
-    "credValue": 6000
-  },
   "hullcracker-ii": {
     "id": "hullcracker-ii",
     "name": "Hullcracker II",
@@ -52,6 +43,15 @@
     "weight": 7,
     "stackSize": 1,
     "credValue": 13000
+  },
+  "wolfpack": {
+    "id": "wolfpack",
+    "name": "Wolfpack",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5049f52ab01f27e18bc938a171317b4ee69173612968aa43b914e90665b2a275.png",
+    "weight": 1,
+    "stackSize": 1,
+    "credValue": 6000
   },
   "assessor-matrix": {
     "id": "assessor-matrix",
@@ -133,15 +133,6 @@
     "weight": 0.25,
     "stackSize": 1,
     "credValue": 4000
-  },
-  "kinetic-converter": {
-    "id": "kinetic-converter",
-    "name": "Kinetic Converter",
-    "rarity": "Legendary",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/f2890fd902a9650a9327e4f2c6ff5bbdc3b5b9ea81b6266b936a3fed52ce9fc7.png",
-    "weight": 0.75,
-    "stackSize": 1,
-    "credValue": 7000
   },
   "matriarch-reactor": {
     "id": "matriarch-reactor",

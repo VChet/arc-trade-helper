@@ -7,13 +7,6 @@
     "price": 150000
   },
   {
-    "itemId": "deadline",
-    "title": "Deadline",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8af3c45402fe1d383e6eeb175d17b566b7622c0488543f3dccc8479724307410.png",
-    "price": 20000
-  },
-  {
     "itemId": "hullcracker-ii",
     "title": "Hullcracker II",
     "rarity": "Epic",
@@ -21,10 +14,10 @@
     "price": 30000
   },
   {
-    "itemId": "kinetic-converter",
-    "title": "Kinetic Converter",
-    "rarity": "Legendary",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/f2890fd902a9650a9327e4f2c6ff5bbdc3b5b9ea81b6266b936a3fed52ce9fc7.png",
-    "price": 50000
+    "itemId": "wolfpack",
+    "title": "Wolfpack",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5049f52ab01f27e18bc938a171317b4ee69173612968aa43b914e90665b2a275.png",
+    "price": 30000
   }
 ]
