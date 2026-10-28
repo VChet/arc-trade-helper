@@ -55,13 +55,17 @@ export interface MetaForgeTradersResponse extends MetaForgeResponse {
   }
 }
 
-export interface MetaForgeTradeInterval {
-  time: number
-  min_price: number
-  max_price: number
-  median_price: number
-  trade_count: number
+export interface MetaForgeLiveTrade {
+  completion_id: string
+  item: {
+    item_id: string
+    quantity: number
+  }
+  listing_type: "buy" | "sell"
+  trade_type: string
+  price_in_seeds: number
+  timestamp: string
 }
-export interface MetaForgeTradeHistoryResponse {
-  data: MetaForgeTradeInterval[]
+export interface MetaForgeLiveTradesResponse {
+  data: MetaForgeLiveTrade[]
 }

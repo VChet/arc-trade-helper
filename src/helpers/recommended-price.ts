@@ -1,10 +1,12 @@
 import { convertToMs } from "@/helpers/format";
-import type { MetaForgeTradeInterval } from "@/types/api";
+import type { MetaForgeLiveTrade } from "@/types/api";
 
 interface Metrics {
+  totalWeight: number
   tradeCount: number
+  batchTradeCount: number
   /** value in ms */
-  latestInterval: number
+  latestTrade: number
   spread: number
 }
 export interface RecommendedPrice {
@@ -13,98 +15,105 @@ export interface RecommendedPrice {
   confidence: "low" | "medium" | "high"
 }
 
-const SEVEN_DAYS_MS = convertToMs(7 * 24, "hours");
-const MIN_SAMPLE_TRADE_COUNT = 10;
-const CONFIDENCE_THRESHOLDS = {
-  low: { minEffectiveTradeCount: 5, maxAge: convertToMs(72, "hours"), maxRelativeSpread: 0.5 },
-  high: { minEffectiveTradeCount: 10, maxAge: convertToMs(24, "hours"), maxRelativeSpread: 0.15 }
-};
-
 interface WeightedPrice {
   price: number
   weight: number
+  time: number
 }
 
-function getConfidence(effectiveTradeCount: number, age: number, relativeSpread: number): RecommendedPrice["confidence"] {
+export const TRADE_CONFIG = {
+  windowMs: convertToMs(7 * 24, "hours"),
+  batchQuantity: 5,
+  recencyHalfLife: convertToMs(24, "hours")
+};
+const CONFIDENCE_THRESHOLDS = {
+  low: { minTradeWeight: 3, maxAge: convertToMs(72, "hours"), maxRelativeSpread: 0.5 },
+  high: { minTradeWeight: 5, minBatchTradeCount: 3, maxAge: convertToMs(24, "hours"), maxRelativeSpread: 0.3 }
+};
+
+function getRecencyWeightModifier(age: number): number {
+  return 2 ** (-age / TRADE_CONFIG.recencyHalfLife);
+}
+
+function getConfidence(
+  totalWeight: number,
+  batchTradeCount: number,
+  latestTrade: number,
+  relativeSpread: number
+): RecommendedPrice["confidence"] {
   const { low, high } = CONFIDENCE_THRESHOLDS;
   if (
-    effectiveTradeCount < low.minEffectiveTradeCount ||
-    age > low.maxAge ||
+    totalWeight < low.minTradeWeight ||
+    latestTrade > low.maxAge ||
     relativeSpread > low.maxRelativeSpread
   ) { return "low"; }
 
   if (
-    effectiveTradeCount >= high.minEffectiveTradeCount &&
-    age <= high.maxAge &&
+    totalWeight >= high.minTradeWeight &&
+    batchTradeCount >= high.minBatchTradeCount &&
+    latestTrade <= high.maxAge &&
     relativeSpread <= high.maxRelativeSpread
   ) { return "high"; }
 
   return "medium";
 }
 
-function weightedQuantiles(prices: WeightedPrice[], totalEffectiveTradeCount: number): [number, number, number] {
-  const thresholds = [0.25, 0.5, 0.75].map((quantile) => totalEffectiveTradeCount * quantile);
-  const lastPrice = prices.at(-1)!.price;
-  const quantiles: [number, number, number] = [lastPrice, lastPrice, lastPrice];
+function weightedQuantile(prices: WeightedPrice[], totalWeight: number, quantile: number): number {
+  const threshold = totalWeight * quantile;
   let accumulatedWeight = 0;
-  let quantileIndex = 0;
 
   for (const { price, weight } of prices) {
     accumulatedWeight += weight;
-    while (quantileIndex < thresholds.length && accumulatedWeight >= thresholds[quantileIndex]) {
-      quantiles[quantileIndex++] = price;
-    }
-    if (quantileIndex === quantiles.length) break;
+    if (accumulatedWeight >= threshold) return price;
   }
 
-  return quantiles;
+  return prices.at(-1)!.price;
 }
 
-function calculateQuality({ min_price, max_price, median_price }: MetaForgeTradeInterval): number {
-  const relativeRange = (max_price - min_price) / median_price;
-  return 1 / (1 + relativeRange);
-}
-
-export function calculateRecommendedPrice(history: MetaForgeTradeInterval[]): RecommendedPrice {
+export function calculateRecommendedPrice(trades: MetaForgeLiveTrade[]): RecommendedPrice {
   const now = Date.now();
-  const windowStart = now - SEVEN_DAYS_MS;
-
-  // Keep recent intervals with valid prices and trades
-  const intervals = history.filter(({ time, median_price, trade_count }) =>
-    time >= windowStart &&
-    time <= now &&
-    median_price > 0 &&
-    trade_count > 0
-  ).sort((a, b) => b.time - a.time);
-
-  if (!intervals.length) return { price: null, metrics: null, confidence: "low" };
+  const windowStart = now - TRADE_CONFIG.windowMs;
 
   const prices: WeightedPrice[] = [];
-  let sampleTradeCount = 0;
-  let totalEffectiveTradeCount = 0;
-  // Give less weight to intervals with wider price ranges
-  for (const interval of intervals) {
-    sampleTradeCount += interval.trade_count;
-    const effectiveTradeCount = interval.trade_count * calculateQuality(interval);
-    if (effectiveTradeCount > 0) {
-      prices.push({ price: interval.median_price, weight: effectiveTradeCount });
-      totalEffectiveTradeCount += effectiveTradeCount;
-    }
-    if (sampleTradeCount >= MIN_SAMPLE_TRADE_COUNT) break;
+  let batchTradeCount = 0;
+  let latestTradeTime = 0;
+
+  for (const trade of trades) {
+    const time = Date.parse(trade.timestamp);
+    const { price_in_seeds: price, item: { quantity } } = trade;
+    if (
+      time < windowStart ||
+      time > now ||
+      price <= 0 ||
+      quantity <= 0
+    ) { continue; }
+
+    if (quantity >= TRADE_CONFIG.batchQuantity) batchTradeCount++;
+
+    prices.push({ price, time, weight: getRecencyWeightModifier(now - time) });
+
+    latestTradeTime = Math.max(latestTradeTime, time);
   }
 
   if (!prices.length) return { price: null, metrics: null, confidence: "low" };
 
-  // Use the middle price as the recommendation and price spread to set confidence
+  const totalWeight = prices.reduce((acc, { weight }) => acc + weight, 0);
   prices.sort((a, b) => a.price - b.price);
-  const [firstQuartile, price, thirdQuartile] = weightedQuantiles(prices, totalEffectiveTradeCount);
-  const recommendedPrice = Math.round(price);
+  const firstQuartile = weightedQuantile(prices, totalWeight, 0.25);
+  const price = weightedQuantile(prices, totalWeight, 0.5);
+  const thirdQuartile = weightedQuantile(prices, totalWeight, 0.75);
   const relativeSpread = (thirdQuartile - firstQuartile) / price;
-  const latestInterval = now - intervals[0].time;
+  const latestTrade = now - latestTradeTime;
 
   return {
-    price: recommendedPrice,
-    metrics: { tradeCount: sampleTradeCount, latestInterval, spread: relativeSpread },
-    confidence: getConfidence(totalEffectiveTradeCount, latestInterval, relativeSpread)
+    price: Math.round(price),
+    metrics: {
+      totalWeight,
+      tradeCount: prices.length,
+      batchTradeCount,
+      latestTrade,
+      spread: relativeSpread
+    },
+    confidence: getConfidence(totalWeight, batchTradeCount, latestTrade, relativeSpread)
   };
 }

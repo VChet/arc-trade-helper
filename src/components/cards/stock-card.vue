@@ -49,8 +49,8 @@ import { IconChartHistogram, IconPackages, IconSeedling } from "@tabler/icons-vu
 import { SEEDS_ID } from "@/constants/items";
 import { getItemData } from "@/helpers/data";
 import { formatHoursAndMinutes, formatNumber } from "@/helpers/format";
-import { calculateRecommendedPrice, type RecommendedPrice } from "@/helpers/recommended-price";
-import { fetchPriceHistory } from "@/services/meta-forge";
+import { calculateRecommendedPrice, TRADE_CONFIG, type RecommendedPrice } from "@/helpers/recommended-price";
+import { fetchLiveTrades } from "@/services/meta-forge";
 import type { StockEntry } from "@/types/item";
 import ItemCard from "./item-card.vue";
 
@@ -74,7 +74,8 @@ const recommendedPriceTooltip = computed<HTMLAttributes["title"]>(() => {
   if (!metrics) return undefined;
   return [
     `Trades: ${metrics.tradeCount}`,
-    `Latest interval: ${formatHoursAndMinutes(metrics.latestInterval)} ago`,
+    `Batch trades (${TRADE_CONFIG.batchQuantity}+): ${metrics.batchTradeCount}`,
+    `Latest trade: ${formatHoursAndMinutes(metrics.latestTrade)} ago`,
     `Spread: ${formatNumber(metrics.spread * 100)}%`
   ].join("\n");
 });
@@ -90,8 +91,8 @@ watchDebounced(price, (value) => emit("price", value), { debounce: 500 });
 
 onMounted(async () => {
   if (props.item.itemId === SEEDS_ID) return;
-  const priceHistory = await fetchPriceHistory(props.item.itemId);
-  recommendedPrice.value = calculateRecommendedPrice(priceHistory);
+  const trades = await fetchLiveTrades(props.item.itemId);
+  recommendedPrice.value = calculateRecommendedPrice(trades);
   if (recommendedPrice.value.price && !price.value) price.value = recommendedPrice.value.price!;
 });
 </script>
