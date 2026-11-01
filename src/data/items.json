@@ -1,4 +1,18 @@
 {
+  "game-cosmetic-7092746": {
+    "id": "game-cosmetic-7092746",
+    "name": "Cauldron (Backpack Attachment)",
+    "rarity": null,
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/1b38cba5c876240eb84f77f064690175c11751bb360eb599276cba1aa0f2190c.png",
+    "credValue": null
+  },
+  "game-cosmetic-n313532347": {
+    "id": "game-cosmetic-n313532347",
+    "name": "Cultist (Backpack)",
+    "rarity": null,
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/d5f433dff8deb18db1be13770f9c96cc164b6f63579fb363957c5473513967c9.png",
+    "credValue": null
+  },
   "raider-tokens": {
     "id": "raider-tokens",
     "name": "Raider Tokens",
@@ -84,7 +98,7 @@
     "id": "bully-fragmenter",
     "name": "Bully Fragmenter",
     "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20261007/221acfd4489c3de66410527a60d71aa2e00830490b7537d7388dc25e62eea689.png",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20261030/d96e7e6947be7a27fcdfe1631c43fe0c19be29353524cff83ecaa6417790e009.png",
     "weight": 0.4,
     "stackSize": 3,
     "credValue": 5000
