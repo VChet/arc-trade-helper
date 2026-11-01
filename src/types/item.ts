@@ -3,11 +3,11 @@ import type { MetaForgeItem, MetaForgeTraderOffer, MetaForgeTraderService } from
 export interface Item {
   id: MetaForgeItem["id"]
   name: MetaForgeItem["name"]
-  rarity: MetaForgeItem["rarity"]
+  rarity: NonNullable<MetaForgeItem["rarity"]>
   icon: MetaForgeItem["icon"]
-  stackSize: MetaForgeItem["stat_block"]["stackSize"]
-  weight: MetaForgeItem["stat_block"]["weight"]
-  credValue: MetaForgeItem["value"]
+  stackSize: NonNullable<MetaForgeItem["stat_block"]["stackSize"]>
+  weight: NonNullable<MetaForgeItem["stat_block"]["weight"]>
+  credValue: NonNullable<MetaForgeItem["value"]>
 }
 export interface PriceEntry {
   itemId: MetaForgeItem["id"]
@@ -21,8 +21,8 @@ export type StockEntry = InventoryEntry & PriceEntry;
 export interface NomadTraderOffer {
   itemId: string
   title: MetaForgeTraderOffer["offer_title"]
-  rarity: MetaForgeItem["rarity"]
-  icon: MetaForgeItem["icon"]
+  rarity: Item["rarity"]
+  icon: Item["icon"]
   price: number
 }
 export interface NomadTraderService {

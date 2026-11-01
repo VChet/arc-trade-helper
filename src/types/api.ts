@@ -9,13 +9,13 @@ type ItemId = keyof typeof itemsData;
 export interface MetaForgeItem {
   id: ItemId
   name: string
-  rarity: string
+  rarity: string | null
   icon: string
   value: number
   stat_block: {
-    [key: string]: number | string
-    stackSize: number
-    weight: number
+    [key: string]: number | string | null
+    stackSize: number | null
+    weight: number | null
   }
 }
 export interface MetaForgeItemsResponse extends MetaForgeResponse {

@@ -2,16 +2,20 @@
   "game-cosmetic-7092746": {
     "id": "game-cosmetic-7092746",
     "name": "Cauldron (Backpack Attachment)",
-    "rarity": null,
+    "rarity": "Common",
     "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/1b38cba5c876240eb84f77f064690175c11751bb360eb599276cba1aa0f2190c.png",
-    "credValue": null
+    "weight": 0,
+    "stackSize": 0,
+    "credValue": 0
   },
   "game-cosmetic-n313532347": {
     "id": "game-cosmetic-n313532347",
     "name": "Cultist (Backpack)",
-    "rarity": null,
+    "rarity": "Common",
     "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/d5f433dff8deb18db1be13770f9c96cc164b6f63579fb363957c5473513967c9.png",
-    "credValue": null
+    "weight": 0,
+    "stackSize": 0,
+    "credValue": 0
   },
   "raider-tokens": {
     "id": "raider-tokens",

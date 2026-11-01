@@ -40,23 +40,34 @@ export function formatItemData(payload: MetaForgeItem): Item {
   return {
     id: payload.id,
     name: payload.name,
-    rarity: payload.rarity,
+    rarity: payload.rarity ?? "Common",
     icon: payload.icon,
-    weight: payload.stat_block.weight,
-    stackSize: payload.stat_block.stackSize,
-    credValue: payload.value
+    weight: payload.stat_block.weight ?? 0,
+    stackSize: payload.stat_block.stackSize ?? 0,
+    credValue: payload.value ?? 0
   };
 }
 
 export function formatTraderOffer(payload: MetaForgeTraderOffer): NomadTraderOffer | null {
   const needsArcParts = payload.accepted_items.some((item) => ARC_PART_IDS.includes(item.id));
   if (!needsArcParts) return null;
-  const fallback = getItemData(TOKENS_ID) as Item;
+
+  if (payload.item) {
+    return {
+      itemId: payload.item.id,
+      title: payload.offer_title,
+      rarity: payload.item.rarity ?? "Common",
+      icon: payload.item.icon,
+      price: payload.coin_cost
+    };
+  }
+
+  const { id: itemId, rarity, icon } = getItemData(TOKENS_ID);
   return {
-    itemId: payload.item?.id ?? fallback.id,
+    itemId,
     title: payload.offer_title,
-    rarity: payload.item?.rarity ?? fallback.rarity,
-    icon: payload.item?.icon ?? fallback.icon,
+    rarity,
+    icon,
     price: payload.coin_cost
   };
 }
