@@ -1,12 +1,13 @@
 <template>
   <item-card :id="service.id" :title="service.name">
-    <div>{{ service.price }} cred</div>
+    <div>{{ formatCredValue(service.price) }}</div>
     <div>Affordable: {{ affordableBundles }}</div>
   </item-card>
 </template>
 <script setup lang="ts">
 import { computed } from "vue";
 import { getAffordableBundles } from "@/helpers/affordable-bundles";
+import { formatCredValue } from "@/helpers/format";
 import type { NomadTraderService } from "@/types/item";
 import ItemCard from "./item-card.vue";
 

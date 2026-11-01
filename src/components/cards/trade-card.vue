@@ -9,7 +9,7 @@
       {{ pluralize(item.seedPrice * item.quantity, "seed") }}
     </div>
     <div v-if="'totalCredValue' in item">
-      {{ item.totalCredValue }} cred
+      {{ formatCredValue(item.totalCredValue) }}
     </div>
     <div v-if="'slots' in item">
       <icon-layout-grid />
@@ -23,7 +23,7 @@
 <script setup lang="ts">
 import { IconLayoutGrid, IconSeedling, IconWeight } from "@tabler/icons-vue";
 import { getItemData } from "@/helpers/data";
-import { formatWeight, pluralize } from "@/helpers/format";
+import { formatCredValue, formatWeight, pluralize } from "@/helpers/format";
 import type { ArcPartResult, ExchangeItem, RaidItem } from "@/types/barter";
 import ItemCard from "./item-card.vue";
 

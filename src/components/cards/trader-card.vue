@@ -1,6 +1,6 @@
 <template>
   <item-card :id="item.itemId" :icon="item.icon" :title :rarity="item.rarity">
-    <div>{{ item.price }} cred</div>
+    <div>{{ formatCredValue(item.price) }}</div>
     <div>Affordable: {{ affordableBundles }}</div>
   </item-card>
 </template>
@@ -8,6 +8,7 @@
 import { computed } from "vue";
 import { getAffordableBundles } from "@/helpers/affordable-bundles";
 import { getItemData } from "@/helpers/data";
+import { formatCredValue } from "@/helpers/format";
 import type { MetaForgeItem } from "@/types/api";
 import type { NomadTraderOffer } from "@/types/item";
 import ItemCard from "./item-card.vue";

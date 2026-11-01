@@ -12,12 +12,24 @@ export function convertToMs(value: number, unit: "seconds" | "minutes" | "hours"
   return value * unitToMs[unit];
 }
 
-export function formatNumber(value: number, decimals = 1): string {
-  return Number(value.toFixed(decimals)).toString();
+const NumberFormatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 });
+export function formatNumber(value: number): string {
+  return NumberFormatter.format(value);
 }
 
+const WeightFormatter = new Intl.NumberFormat("en-US", {
+  style: "unit",
+  unit: "kilogram",
+  unitDisplay: "narrow",
+  maximumFractionDigits: 1
+});
 export function formatWeight(weight: number): string {
-  return `${formatNumber(weight)}kg`;
+  return WeightFormatter.format(weight);
+}
+
+const CredFormatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
+export function formatCredValue(value: number): string {
+  return `${CredFormatter.format(value)} cred`;
 }
 
 export function pluralize(count: number, word: string): string {
