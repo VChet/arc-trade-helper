@@ -24,6 +24,7 @@ export interface NomadTraderOffer {
   rarity: Item["rarity"]
   icon: Item["icon"]
   price: number
+  expires: MetaForgeTraderOffer["offer_end"]
 }
 export interface NomadTraderService {
   id: MetaForgeTraderService["id"]

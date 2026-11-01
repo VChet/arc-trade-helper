@@ -38,6 +38,8 @@ export interface MetaForgeTraderOffer {
   id: string
   offer_title: string
   coin_cost: number
+  offer_start: string
+  offer_end: string
   accepted_items: MetaForgeAcceptedItem[]
   item: Pick<MetaForgeItem, "id" | "name" | "rarity" | "icon" | "value"> | null
 }

@@ -36,6 +36,14 @@ export function formatHoursAndMinutes(milliseconds: number): string {
   return parts.join(", ");
 }
 
+export function formatTimeLeft(isoDate: string): string {
+  const now = new Date();
+  const targetDate = new Date(isoDate);
+  const diffMs = targetDate.getTime() - now.getTime();
+  if (diffMs <= 0) return "—";
+  return formatHoursAndMinutes(diffMs);
+}
+
 export function formatItemData(payload: MetaForgeItem): Item {
   return {
     id: payload.id,
@@ -58,7 +66,8 @@ export function formatTraderOffer(payload: MetaForgeTraderOffer): NomadTraderOff
       title: payload.offer_title,
       rarity: payload.item.rarity ?? "Common",
       icon: payload.item.icon,
-      price: payload.coin_cost
+      price: payload.coin_cost,
+      expires: payload.offer_end
     };
   }
 
@@ -68,7 +77,8 @@ export function formatTraderOffer(payload: MetaForgeTraderOffer): NomadTraderOff
     title: payload.offer_title,
     rarity,
     icon,
-    price: payload.coin_cost
+    price: payload.coin_cost,
+    expires: payload.offer_end
   };
 }
 export function formatTraderService(payload: MetaForgeTraderService): NomadTraderService | null {

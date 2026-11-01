@@ -108,6 +108,10 @@
       </p>
 
       <h3>Offers</h3>
+      <p class="summary">
+        <icon-clock />
+        {{ formatTimeLeft(traderItems[0].expires) }}
+      </p>
       <ul class="grid">
         <trader-card
           v-for="item in traderItems"
@@ -132,6 +136,7 @@
 <script setup lang="ts">
 import {
   IconBuildingStore,
+  IconClock,
   IconDrone,
   IconLayoutGrid,
   IconMessageCircle,
@@ -141,6 +146,7 @@ import {
 } from "@tabler/icons-vue";
 import { ITEM_IDS, TOKENS_ID } from "@/constants/items";
 import { CAPACITY } from "@/helpers/capacity";
+import { formatTimeLeft } from "@/helpers/format";
 import { useItemsStore } from "@/store/items";
 import traderItems from "../data/nomad-trader-offers.json" with { type: "json" };
 import traderServices from "../data/nomad-trader-services.json" with { type: "json" };

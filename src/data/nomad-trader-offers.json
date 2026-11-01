@@ -4,34 +4,39 @@
     "title": "2.3 Backpack Attachment: Cauldron",
     "rarity": "Common",
     "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/1b38cba5c876240eb84f77f064690175c11751bb360eb599276cba1aa0f2190c.png",
-    "price": 50000
+    "price": 50000,
+    "expires": "2026-11-03T13:00:00+00:00"
   },
   {
     "itemId": "game-cosmetic-n313532347",
     "title": "Occult Backpack",
     "rarity": "Common",
     "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/d5f433dff8deb18db1be13770f9c96cc164b6f63579fb363957c5473513967c9.png",
-    "price": 100000
+    "price": 100000,
+    "expires": "2026-11-03T13:00:00+00:00"
   },
   {
     "itemId": "raider-tokens",
     "title": "Raider Tokens x25",
     "rarity": "Common",
     "icon": "https://static.metaforge.app/arc-raiders/icons/raider-tokens.webp",
-    "price": 150000
+    "price": 150000,
+    "expires": "2026-11-03T13:00:00+00:00"
   },
   {
     "itemId": "hullcracker-ii",
     "title": "Hullcracker II",
     "rarity": "Epic",
     "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5ce13cda08706c8280e8357967706a5f89a550bf2e228e1922e6f8a6d311a8a0.png",
-    "price": 30000
+    "price": 30000,
+    "expires": "2026-11-03T13:00:00+00:00"
   },
   {
     "itemId": "wolfpack",
     "title": "Wolfpack",
     "rarity": "Epic",
     "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5049f52ab01f27e18bc938a171317b4ee69173612968aa43b914e90665b2a275.png",
-    "price": 30000
+    "price": 30000,
+    "expires": "2026-11-03T13:00:00+00:00"
   }
 ]
