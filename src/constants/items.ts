@@ -20,10 +20,7 @@ export const ITEM_IDS = [
   ...ARC_PART_IDS,
   SEEDS_ID,
   TOKENS_ID,
-  "fossilized-lightning",
-  "sentinel-part",
-  "showstopper",
-  "snap-hook"
+  "showstopper"
 ] as const satisfies readonly Item["id"][];
 
 export const RARITY_ORDER: Record<Item["rarity"], number> = {

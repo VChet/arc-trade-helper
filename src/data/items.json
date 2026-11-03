@@ -26,15 +26,6 @@
     "stackSize": 100,
     "credValue": 100
   },
-  "sentinel-part": {
-    "id": "sentinel-part",
-    "name": "Sentinel Firing Core",
-    "rarity": "Rare",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/e5ed547883345a82c18c499dea0a5c2cb3eb04b361d4ee277ede460910116e11.png",
-    "weight": 1,
-    "stackSize": 3,
-    "credValue": 2000
-  },
   "showstopper": {
     "id": "showstopper",
     "name": "Showstopper",
@@ -133,15 +124,6 @@
     "weight": 0.5,
     "stackSize": 3,
     "credValue": 6000
-  },
-  "fossilized-lightning": {
-    "id": "fossilized-lightning",
-    "name": "Fossilized Lightning",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/042ca30b6c7b7cbe0fddf9357018404aa6d7c7528b662c04a8c460dd3baabfbb.png",
-    "weight": 0.25,
-    "stackSize": 1,
-    "credValue": 4000
   },
   "snap-hook": {
     "id": "snap-hook",
