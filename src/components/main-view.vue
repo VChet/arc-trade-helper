@@ -108,7 +108,7 @@
       </p>
 
       <h3>Offers</h3>
-      <p class="summary">
+      <p v-if="formatTimeLeft(traderItems[0].expires)" class="summary">
         <icon-clock />
         {{ formatTimeLeft(traderItems[0].expires) }}
       </p>

@@ -48,11 +48,11 @@ export function formatHoursAndMinutes(milliseconds: number): string {
   return parts.join(", ");
 }
 
-export function formatTimeLeft(isoDate: string): string {
+export function formatTimeLeft(isoDate: string): string | null {
   const now = new Date();
   const targetDate = new Date(isoDate);
   const diffMs = targetDate.getTime() - now.getTime();
-  if (diffMs <= 0) return "—";
+  if (diffMs <= 0) return null;
   return formatHoursAndMinutes(diffMs);
 }
 
