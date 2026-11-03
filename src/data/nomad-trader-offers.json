@@ -1,19 +1,11 @@
 [
   {
-    "itemId": "game-cosmetic-7092746",
-    "title": "2.3 Backpack Attachment: Cauldron",
+    "itemId": "game-cosmetic-2024611007",
+    "title": "2.4 Backpack Charm: Vintage Mic",
     "rarity": "Common",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/1b38cba5c876240eb84f77f064690175c11751bb360eb599276cba1aa0f2190c.png",
-    "price": 50000,
-    "expires": "2026-11-03T13:00:00+00:00"
-  },
-  {
-    "itemId": "game-cosmetic-n313532347",
-    "title": "Occult Backpack",
-    "rarity": "Common",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/d5f433dff8deb18db1be13770f9c96cc164b6f63579fb363957c5473513967c9.png",
-    "price": 100000,
-    "expires": "2026-11-03T13:00:00+00:00"
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/c54d33933862c2be2774e7771e65c16c33e2355d0dcf05ecc3dab99bee51e1ce.png",
+    "price": 75000,
+    "expires": "2026-11-10T13:00:00+00:00"
   },
   {
     "itemId": "raider-tokens",
@@ -21,7 +13,15 @@
     "rarity": "Common",
     "icon": "https://static.metaforge.app/arc-raiders/icons/raider-tokens.webp",
     "price": 150000,
-    "expires": "2026-11-03T13:00:00+00:00"
+    "expires": "2026-11-10T13:00:00+00:00"
+  },
+  {
+    "itemId": "deadline",
+    "title": "Deadline",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8af3c45402fe1d383e6eeb175d17b566b7622c0488543f3dccc8479724307410.png",
+    "price": 30000,
+    "expires": "2026-11-10T13:00:00+00:00"
   },
   {
     "itemId": "hullcracker-ii",
@@ -29,14 +29,14 @@
     "rarity": "Epic",
     "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5ce13cda08706c8280e8357967706a5f89a550bf2e228e1922e6f8a6d311a8a0.png",
     "price": 30000,
-    "expires": "2026-11-03T13:00:00+00:00"
+    "expires": "2026-11-10T13:00:00+00:00"
   },
   {
-    "itemId": "wolfpack",
-    "title": "Wolfpack",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5049f52ab01f27e18bc938a171317b4ee69173612968aa43b914e90665b2a275.png",
-    "price": 30000,
-    "expires": "2026-11-03T13:00:00+00:00"
+    "itemId": "snap-hook",
+    "title": "Snap Hook",
+    "rarity": "Legendary",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/47b3fca0293a250f1ea89bc67025a2378f74e015fcf7ad6a4b781182f225e0ea.png",
+    "price": 90000,
+    "expires": "2026-11-10T13:00:00+00:00"
   }
 ]

@@ -1,18 +1,9 @@
 {
-  "game-cosmetic-7092746": {
-    "id": "game-cosmetic-7092746",
-    "name": "Cauldron (Backpack Attachment)",
+  "game-cosmetic-2024611007": {
+    "id": "game-cosmetic-2024611007",
+    "name": "Vintage Mic (Backpack Charm)",
     "rarity": "Common",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/1b38cba5c876240eb84f77f064690175c11751bb360eb599276cba1aa0f2190c.png",
-    "weight": 0,
-    "stackSize": 0,
-    "credValue": 0
-  },
-  "game-cosmetic-n313532347": {
-    "id": "game-cosmetic-n313532347",
-    "name": "Cultist (Backpack)",
-    "rarity": "Common",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/d5f433dff8deb18db1be13770f9c96cc164b6f63579fb363957c5473513967c9.png",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/c54d33933862c2be2774e7771e65c16c33e2355d0dcf05ecc3dab99bee51e1ce.png",
     "weight": 0,
     "stackSize": 0,
     "credValue": 0
@@ -53,6 +44,15 @@
     "stackSize": 5,
     "credValue": 2100
   },
+  "deadline": {
+    "id": "deadline",
+    "name": "Deadline",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8af3c45402fe1d383e6eeb175d17b566b7622c0488543f3dccc8479724307410.png",
+    "weight": 1,
+    "stackSize": 1,
+    "credValue": 6000
+  },
   "hullcracker-ii": {
     "id": "hullcracker-ii",
     "name": "Hullcracker II",
@@ -61,15 +61,6 @@
     "weight": 7,
     "stackSize": 1,
     "credValue": 13000
-  },
-  "wolfpack": {
-    "id": "wolfpack",
-    "name": "Wolfpack",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5049f52ab01f27e18bc938a171317b4ee69173612968aa43b914e90665b2a275.png",
-    "weight": 1,
-    "stackSize": 1,
-    "credValue": 6000
   },
   "assessor-matrix": {
     "id": "assessor-matrix",
@@ -152,6 +143,15 @@
     "stackSize": 1,
     "credValue": 4000
   },
+  "snap-hook": {
+    "id": "snap-hook",
+    "name": "Snap Hook",
+    "rarity": "Legendary",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/47b3fca0293a250f1ea89bc67025a2378f74e015fcf7ad6a4b781182f225e0ea.png",
+    "weight": 5,
+    "stackSize": 1,
+    "credValue": 14000
+  },
   "matriarch-reactor": {
     "id": "matriarch-reactor",
     "name": "Matriarch Reactor",
@@ -169,14 +169,5 @@
     "weight": 10,
     "stackSize": 1,
     "credValue": 11000
-  },
-  "snap-hook": {
-    "id": "snap-hook",
-    "name": "Snap Hook",
-    "rarity": "Legendary",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/47b3fca0293a250f1ea89bc67025a2378f74e015fcf7ad6a4b781182f225e0ea.png",
-    "weight": 5,
-    "stackSize": 1,
-    "credValue": 14000
   }
 }
