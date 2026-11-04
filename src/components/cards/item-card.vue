@@ -1,5 +1,5 @@
 <template>
-  <li class="item-card" :class="rarity?.toLowerCase()">
+  <li class="item-card" :class="[rarity?.toLowerCase(), { highlight }]">
     <header :class="{ clickable }" @click="clickable && goToMarket()">
       <img v-if="icon" :src="icon">
       <h3>
@@ -23,11 +23,12 @@ interface Props {
   icon?: Item["icon"]
   rarity?: Item["rarity"]
   clickable?: boolean
+  highlight?: boolean
 }
 interface Slots {
   default?: () => VNodeChild
 }
-const props = withDefaults(defineProps<Props>(), { clickable: false });
+const props = withDefaults(defineProps<Props>(), { clickable: false, highlight: false });
 const slots = defineSlots<Slots>();
 
 function goToMarket() {
@@ -49,6 +50,12 @@ function goToMarket() {
   &:hover,
   &:focus-within {
     border-color: var(--base);
+  }
+  &.highlight,
+  &.highlight:hover,
+  &.highlight:focus-within {
+    border-color: #5ee9b5;
+    box-shadow: 0 0 0.25rem 0 #5ee9b5;
   }
   &.common {
     --rarity-color: #6c6c6c;
