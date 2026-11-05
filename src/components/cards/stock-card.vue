@@ -44,7 +44,7 @@
 </template>
 <script setup lang="ts">
 import { computed, onMounted, ref, type HTMLAttributes } from "vue";
-import { watchDebounced } from "@vueuse/core";
+import { useEventListener, watchDebounced } from "@vueuse/core";
 import { IconChartHistogram, IconPackages, IconSeedling } from "@tabler/icons-vue";
 import { SEEDS_ID } from "@/constants/items";
 import { getItemData } from "@/helpers/data";
@@ -89,11 +89,16 @@ const highlight = computed<boolean>(() => {
 watchDebounced(quantity, (value) => emit("quantity", value!), { debounce: 500 });
 watchDebounced(price, (value) => emit("price", value), { debounce: 500 });
 
-onMounted(async () => {
+async function updateRecommendedPrice() {
   if (props.item.itemId === SEEDS_ID) return;
   const trades = await fetchLiveTrades(props.item.itemId);
   recommendedPrice.value = calculateRecommendedPrice(trades);
-  if (recommendedPrice.value.price && !price.value) price.value = recommendedPrice.value.price!;
+  if (recommendedPrice.value.price && !price.value) price.value = recommendedPrice.value.price;
+}
+
+onMounted(updateRecommendedPrice);
+useEventListener(window, "sync-prices", () => {
+  if (recommendedPrice.value.price) price.value = recommendedPrice.value.price;
 });
 </script>
 <style>

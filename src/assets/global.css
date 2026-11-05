@@ -125,31 +125,29 @@ a {
   &:focus-visible {
     box-shadow: 0 0.25rem 0 -0.125rem var(--accent);
   }
-  svg {
-    color: var(--accent);
-  }
 }
-button {
+button,
+.button {
   display: inline-flex;
-  gap: 0.5rem;
+  gap: 0.25rem;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
   color: inherit;
   white-space: nowrap;
   cursor: pointer;
   outline: none;
-  background: none;
-  border: 1px solid var(--base);
+  background: var(--card);
+  border: 1px solid var(--base-dimmed);
   border-radius: var(--radius);
   transition: transform 0.3s;
-  &:hover,
-  &:focus-visible {
+  &:hover, &:focus-visible {
     color: var(--accent);
-    border-color: var(--accent);
+    text-decoration: none;
+    background: var(--base-dimmed);
   }
   &:focus-visible {
-    box-shadow: 0 0 0.625rem 0 var(--accent);
+    box-shadow: 0 0.25rem 0 -0.125rem var(--accent);
   }
   &:disabled {
     pointer-events: none;

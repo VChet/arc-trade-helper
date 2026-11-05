@@ -1,15 +1,15 @@
 <template>
   <main class="main-container">
     <div class="links">
-      <a href="https://metaforge.app/arc-raiders/market" target="_blank">
+      <a class="button" href="https://metaforge.app/arc-raiders/market" target="_blank">
         <icon-building-store />
         Marketplace
       </a>
-      <a href="https://metaforge.app/arc-raiders/market/my-listings" target="_blank">
+      <a class="button" href="https://metaforge.app/arc-raiders/market/my-listings" target="_blank">
         <icon-package />
         My Listings
       </a>
-      <a href="https://metaforge.app/arc-raiders/market/messages" target="_blank">
+      <a class="button" href="https://metaforge.app/arc-raiders/market/messages" target="_blank">
         <icon-message-circle />
         Messages
       </a>
@@ -22,6 +22,10 @@
         In the second field, enter your preferred price or use the recommended price from the third row.<br>
         The recommendation's color indicates confidence based on the number of recent trades and price variability.
       </p>
+      <button class="summary" type="button" @click="syncPrices">
+        <icon-arrows-exchange />
+        Use recommended prices
+      </button>
       <ul class="grid">
         <stock-card
           v-for="item in itemRows"
@@ -135,6 +139,7 @@
 </template>
 <script setup lang="ts">
 import {
+  IconArrowsExchange,
   IconBuildingStore,
   IconClock,
   IconDrone,
@@ -175,6 +180,9 @@ function setQuantity(id: Item["id"], quantity: number) {
   const item = inventory.value.find(({ itemId }) => itemId === id);
   if (item) item.quantity = quantity;
 }
+function syncPrices() {
+  window.dispatchEvent(new Event("sync-prices"));
+}
 </script>
 <style>
 .main-container {
@@ -186,16 +194,6 @@ function setQuantity(id: Item["id"], quantity: number) {
   .links {
     display: flex;
     gap: 0.5rem;
-    a {
-      padding: 0.5rem 0.75rem;
-      background: var(--card);
-      border: 1px solid var(--base-dimmed);
-      border-radius: var(--radius);
-      &:hover, &:focus-visible {
-        text-decoration: none;
-        background: var(--base-dimmed);
-      }
-    }
   }
   .grid {
     display: grid;
