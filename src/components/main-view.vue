@@ -22,10 +22,6 @@
         In the second field, enter your preferred price or use the recommended price from the third row.<br>
         The recommendation's color indicates confidence based on the number of recent trades and price variability.
       </p>
-      <button class="summary" type="button" @click="syncPrices">
-        <icon-arrows-exchange />
-        Use recommended prices
-      </button>
       <ul class="grid">
         <stock-card
           v-for="item in itemRows"
@@ -35,18 +31,24 @@
           @price="setPrice(item.itemId, $event)"
         />
       </ul>
-      <label class="capacity-control">
-        <icon-layout-grid />
-        Augment capacity:
-        <input
-          v-model.number="augmentCapacity"
-          name="inventory-capacity"
-          type="number"
-          :min="CAPACITY.min"
-          :max="CAPACITY.max"
-          step="1"
-        >
-      </label>
+      <div class="summary">
+        <button type="button" @click="syncPrices">
+          <icon-arrows-exchange />
+          Use recommended prices
+        </button>
+        <label class="capacity-control">
+          <icon-layout-grid />
+          Augment capacity:
+          <input
+            v-model.number="augmentCapacity"
+            name="inventory-capacity"
+            type="number"
+            :min="CAPACITY.min"
+            :max="CAPACITY.max"
+            step="1"
+          >
+        </label>
+      </div>
     </section>
 
     <section>
