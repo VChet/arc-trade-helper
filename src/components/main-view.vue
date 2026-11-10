@@ -113,25 +113,30 @@
         Arc Parts value: {{ formatCredValue(barterPlan.partsExchange.totalCredValue) }}
       </p>
 
-      <h3>Offers</h3>
-      <p v-if="formatTimeLeft(traderItems[0].expires)" class="summary">
-        <icon-clock />
-        {{ formatTimeLeft(traderItems[0].expires) }}
-      </p>
-      <p v-else class="summary offer-expired">
-        <icon-alert-triangle />
-        Offer data has expired. Fresh data will be fetched automatically within 12 hours.
-      </p>
-      <ul class="grid">
-        <trader-card
-          v-for="item in traderItems"
-          :key="item.itemId"
-          :item
-          :cred-value="barterPlan.partsExchange.totalCredValue"
-        />
-      </ul>
+      <template v-if="traderItems.length">
+        <h3>Offers</h3>
+        <p v-if="formatTimeLeft(traderItems[0].expires)" class="summary">
+          <icon-clock />
+          {{ formatTimeLeft(traderItems[0].expires) }}
+        </p>
+        <p v-else class="summary offer-expired">
+          <icon-alert-triangle />
+          Offer data has expired. Fresh data will be fetched automatically within 12 hours.
+        </p>
+        <ul class="grid">
+          <trader-card
+            v-for="item in traderItems"
+            :key="item.itemId"
+            :item
+            :cred-value="barterPlan.partsExchange.totalCredValue"
+          />
+        </ul>
+      </template>
 
-      <h3>Services</h3>
+      <template v-if="traderServices.length" />
+      <h3>
+        Services
+      </h3>
       <ul class="grid">
         <service-card
           v-for="service in traderServices"
