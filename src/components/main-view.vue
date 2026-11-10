@@ -165,14 +165,17 @@ import { ITEM_IDS, TOKENS_ID } from "@/constants/items";
 import { CAPACITY } from "@/helpers/capacity";
 import { formatCredValue, formatTimeLeft } from "@/helpers/format";
 import { useItemsStore } from "@/store/items";
-import traderItems from "../data/nomad-trader-offers.json" with { type: "json" };
-import traderServices from "../data/nomad-trader-services.json" with { type: "json" };
-import type { Item } from "@/types/item";
+import traderItemsJson from "../data/nomad-trader-offers.json" with { type: "json" };
+import traderServicesJson from "../data/nomad-trader-services.json" with { type: "json" };
+import type { Item, NomadTraderOffer, NomadTraderService } from "@/types/item";
 import ServiceCard from "./cards/service-card.vue";
 import StockCard from "./cards/stock-card.vue";
 import TradeCard from "./cards/trade-card.vue";
 import TraderCard from "./cards/trader-card.vue";
 import RaidList from "./raid-list.vue";
+
+const traderItems: NomadTraderOffer[] = traderItemsJson;
+const traderServices: NomadTraderService[] = traderServicesJson;
 
 const { prices, inventory, augmentCapacity, barterPlan } = useItemsStore();
 const priceMap = new Map(prices.value.map((item) => [item.itemId, item]));
