@@ -20,6 +20,10 @@ export const ITEM_IDS = [
   ...ARC_PART_IDS,
   SEEDS_ID,
   TOKENS_ID,
+  "arc-conductive-coupler",
+  "arc-insulated-coupler",
+  "arc-plated-coupler",
+  "frigate-inductor",
   "showstopper"
 ] as const satisfies readonly Item["id"][];
 

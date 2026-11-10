@@ -98,6 +98,33 @@
     "stackSize": 3,
     "credValue": 6000
   },
+  "arc-conductive-coupler": {
+    "id": "arc-conductive-coupler",
+    "name": "ARC Conductive Coupler",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20261007/69a3fe47aa656078f09e58e564234a35f29fb0f60db64161ee1afcfec7918d30.png",
+    "weight": 0.5,
+    "stackSize": 1,
+    "credValue": 100
+  },
+  "arc-insulated-coupler": {
+    "id": "arc-insulated-coupler",
+    "name": "ARC Insulated Coupler",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20261007/b0f0891750cb27d7731a87d176749da1f2442ad15b2d7e77447808340325e91a.png",
+    "weight": 0,
+    "stackSize": 1,
+    "credValue": 100
+  },
+  "arc-plated-coupler": {
+    "id": "arc-plated-coupler",
+    "name": "ARC Plated Coupler",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20261007/6345462cb2fbc15a7333f5e05c1dbc0b8a3c301afc2b5b9ce87689e81924edae.png",
+    "weight": 0,
+    "stackSize": 1,
+    "credValue": 100
+  },
   "matriarch-reactor": {
     "id": "matriarch-reactor",
     "name": "Matriarch Reactor",
@@ -115,5 +142,14 @@
     "weight": 10,
     "stackSize": 1,
     "credValue": 11000
+  },
+  "frigate-inductor": {
+    "id": "frigate-inductor",
+    "name": "Frigate Inductor",
+    "rarity": "Legendary",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20261007/3955911563f079f5d73d781266ff47a444577ffa006c524e60200d66e67483ad.png",
+    "weight": 0.5,
+    "stackSize": 1,
+    "credValue": 7000
   }
 }
