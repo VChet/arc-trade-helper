@@ -118,6 +118,10 @@
         <icon-clock />
         {{ formatTimeLeft(traderItems[0].expires) }}
       </p>
+      <p v-else class="summary offer-expired">
+        <icon-alert-triangle />
+        Offer data has expired. Fresh data will be fetched automatically within 12 hours.
+      </p>
       <ul class="grid">
         <trader-card
           v-for="item in traderItems"
@@ -141,6 +145,7 @@
 </template>
 <script setup lang="ts">
 import {
+  IconAlertTriangle,
   IconArrowsExchange,
   IconBuildingStore,
   IconClock,
@@ -223,6 +228,9 @@ function syncPrices() {
       gap: 0.125rem;
       align-items: center;
     }
+  }
+  .offer-expired {
+    color: #ffd43b;
   }
 }
 </style>
