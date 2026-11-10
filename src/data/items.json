@@ -1,12 +1,12 @@
 {
-  "game-cosmetic-2024611007": {
-    "id": "game-cosmetic-2024611007",
-    "name": "Vintage Mic (Backpack Charm)",
+  "assorted-seeds": {
+    "id": "assorted-seeds",
+    "name": "Assorted Seeds",
     "rarity": "Common",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/c54d33933862c2be2774e7771e65c16c33e2355d0dcf05ecc3dab99bee51e1ce.png",
-    "weight": 0,
-    "stackSize": 0,
-    "credValue": 0
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8d395321e2391b02bd4673d9f7f5e371f48a1b1ada76db27e4d5a8f525c08153.png",
+    "weight": 0.05,
+    "stackSize": 100,
+    "credValue": 100
   },
   "raider-tokens": {
     "id": "raider-tokens",
@@ -17,15 +17,6 @@
     "stackSize": 0,
     "credValue": 0
   },
-  "assorted-seeds": {
-    "id": "assorted-seeds",
-    "name": "Assorted Seeds",
-    "rarity": "Common",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8d395321e2391b02bd4673d9f7f5e371f48a1b1ada76db27e4d5a8f525c08153.png",
-    "weight": 0.05,
-    "stackSize": 100,
-    "credValue": 100
-  },
   "showstopper": {
     "id": "showstopper",
     "name": "Showstopper",
@@ -34,24 +25,6 @@
     "weight": 0.4,
     "stackSize": 5,
     "credValue": 2100
-  },
-  "deadline": {
-    "id": "deadline",
-    "name": "Deadline",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8af3c45402fe1d383e6eeb175d17b566b7622c0488543f3dccc8479724307410.png",
-    "weight": 1,
-    "stackSize": 1,
-    "credValue": 6000
-  },
-  "hullcracker-ii": {
-    "id": "hullcracker-ii",
-    "name": "Hullcracker II",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5ce13cda08706c8280e8357967706a5f89a550bf2e228e1922e6f8a6d311a8a0.png",
-    "weight": 7,
-    "stackSize": 1,
-    "credValue": 13000
   },
   "assessor-matrix": {
     "id": "assessor-matrix",
@@ -124,15 +97,6 @@
     "weight": 0.5,
     "stackSize": 3,
     "credValue": 6000
-  },
-  "snap-hook": {
-    "id": "snap-hook",
-    "name": "Snap Hook",
-    "rarity": "Legendary",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/47b3fca0293a250f1ea89bc67025a2378f74e015fcf7ad6a4b781182f225e0ea.png",
-    "weight": 5,
-    "stackSize": 1,
-    "credValue": 14000
   },
   "matriarch-reactor": {
     "id": "matriarch-reactor",
