@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "itemId": "game-cosmetic-237749844",
+    "title": "2.5 Backpack Attachment: Gas Mask",
+    "rarity": "Common",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/81761e95b13a024ceedc0d057a0ca309e5b4f3ca4b03832751d377d2b004618a.png",
+    "price": 75000,
+    "expires": "2026-11-17T13:00:00+00:00"
+  },
+  {
+    "itemId": "game-cosmetic-603418267",
+    "title": "2.5 Emote: Angry",
+    "rarity": "Common",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/dc5f4da9f9c3da530fe98f863c86dfa0debb401bbcaf2a0ef92aa582b535346b.png",
+    "price": 75000,
+    "expires": "2026-11-17T13:00:00+00:00"
+  },
+  {
+    "itemId": "raider-tokens",
+    "title": "Raider Tokens x25",
+    "rarity": "Common",
+    "icon": "https://static.metaforge.app/arc-raiders/icons/raider-tokens.webp",
+    "price": 150000,
+    "expires": "2026-11-17T13:00:00+00:00"
+  },
+  {
+    "itemId": "hullcracker-ii",
+    "title": "Hullcracker II",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5ce13cda08706c8280e8357967706a5f89a550bf2e228e1922e6f8a6d311a8a0.png",
+    "price": 30000,
+    "expires": "2026-11-17T13:00:00+00:00"
+  },
+  {
+    "itemId": "wolfpack",
+    "title": "Wolfpack",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5049f52ab01f27e18bc938a171317b4ee69173612968aa43b914e90665b2a275.png",
+    "price": 30000,
+    "expires": "2026-11-17T13:00:00+00:00"
+  }
+]

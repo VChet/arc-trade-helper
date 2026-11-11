@@ -1,12 +1,21 @@
 {
-  "assorted-seeds": {
-    "id": "assorted-seeds",
-    "name": "Assorted Seeds",
+  "game-cosmetic-237749844": {
+    "id": "game-cosmetic-237749844",
+    "name": "Gas Mask (Backpack Attachment)",
     "rarity": "Common",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8d395321e2391b02bd4673d9f7f5e371f48a1b1ada76db27e4d5a8f525c08153.png",
-    "weight": 0.05,
-    "stackSize": 100,
-    "credValue": 100
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/81761e95b13a024ceedc0d057a0ca309e5b4f3ca4b03832751d377d2b004618a.png",
+    "weight": 0,
+    "stackSize": 0,
+    "credValue": 0
+  },
+  "game-cosmetic-603418267": {
+    "id": "game-cosmetic-603418267",
+    "name": "Angry (Emote)",
+    "rarity": "Common",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/dc5f4da9f9c3da530fe98f863c86dfa0debb401bbcaf2a0ef92aa582b535346b.png",
+    "weight": 0,
+    "stackSize": 0,
+    "credValue": 0
   },
   "raider-tokens": {
     "id": "raider-tokens",
@@ -17,6 +26,15 @@
     "stackSize": 0,
     "credValue": 0
   },
+  "assorted-seeds": {
+    "id": "assorted-seeds",
+    "name": "Assorted Seeds",
+    "rarity": "Common",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8d395321e2391b02bd4673d9f7f5e371f48a1b1ada76db27e4d5a8f525c08153.png",
+    "weight": 0.05,
+    "stackSize": 100,
+    "credValue": 100
+  },
   "showstopper": {
     "id": "showstopper",
     "name": "Showstopper",
@@ -25,6 +43,24 @@
     "weight": 0.4,
     "stackSize": 5,
     "credValue": 2100
+  },
+  "hullcracker-ii": {
+    "id": "hullcracker-ii",
+    "name": "Hullcracker II",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5ce13cda08706c8280e8357967706a5f89a550bf2e228e1922e6f8a6d311a8a0.png",
+    "weight": 7,
+    "stackSize": 1,
+    "credValue": 13000
+  },
+  "wolfpack": {
+    "id": "wolfpack",
+    "name": "Wolfpack",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5049f52ab01f27e18bc938a171317b4ee69173612968aa43b914e90665b2a275.png",
+    "weight": 1,
+    "stackSize": 1,
+    "credValue": 6000
   },
   "assessor-matrix": {
     "id": "assessor-matrix",
@@ -97,33 +133,6 @@
     "weight": 0.5,
     "stackSize": 3,
     "credValue": 6000
-  },
-  "arc-conductive-coupler": {
-    "id": "arc-conductive-coupler",
-    "name": "ARC Conductive Coupler",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20261007/69a3fe47aa656078f09e58e564234a35f29fb0f60db64161ee1afcfec7918d30.png",
-    "weight": 0.5,
-    "stackSize": 1,
-    "credValue": 100
-  },
-  "arc-insulated-coupler": {
-    "id": "arc-insulated-coupler",
-    "name": "ARC Insulated Coupler",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20261007/b0f0891750cb27d7731a87d176749da1f2442ad15b2d7e77447808340325e91a.png",
-    "weight": 0,
-    "stackSize": 1,
-    "credValue": 100
-  },
-  "arc-plated-coupler": {
-    "id": "arc-plated-coupler",
-    "name": "ARC Plated Coupler",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20261007/6345462cb2fbc15a7333f5e05c1dbc0b8a3c301afc2b5b9ce87689e81924edae.png",
-    "weight": 0,
-    "stackSize": 1,
-    "credValue": 100
   },
   "matriarch-reactor": {
     "id": "matriarch-reactor",
