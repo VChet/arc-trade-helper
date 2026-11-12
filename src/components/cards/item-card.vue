@@ -1,10 +1,10 @@
 <template>
   <li class="item-card" :class="[rarity?.toLowerCase(), { highlight }]">
-    <header :class="{ clickable }" @click="clickable && goToMarket()">
+    <header :class="{ link }" @click="link && goToLink()">
       <img v-if="icon" :src="icon">
       <h3>
         {{ title }}
-        <icon-external-link v-if="clickable" title="go to MetaForge Market" />
+        <icon-external-link v-if="link" title="go to MetaForge" />
       </h3>
     </header>
     <footer v-if="slots.default">
@@ -22,19 +22,26 @@ interface Props {
   id: string
   icon?: Item["icon"]
   rarity?: Item["rarity"]
-  clickable?: boolean
+  link?: "market" | "database"
   highlight?: boolean
 }
 interface Slots {
   default?: () => VNodeChild
 }
-const props = withDefaults(defineProps<Props>(), { clickable: false, highlight: false });
+const props = withDefaults(defineProps<Props>(), { highlight: false });
 const slots = defineSlots<Slots>();
 
-function goToMarket() {
-  const url = new URL("https://metaforge.app/arc-raiders/market");
-  url.searchParams.set("item_id", props.id);
-  url.searchParams.set("trade_type", "seed");
+function goToLink() {
+  if (!props.link) return;
+
+  const url = new URL("https://metaforge.app");
+  if (props.link === "database") {
+    url.pathname = `/arc-raiders/database/item/${encodeURIComponent(props.id)}`;
+  } else if (props.link === "market") {
+    url.pathname = "/arc-raiders/market";
+    url.searchParams.set("item_id", props.id);
+    url.searchParams.set("trade_type", "seed");
+  }
   window.open(url, "_blank", "noopener, noreferrer");
 }
 </script>
@@ -81,7 +88,7 @@ function goToMarket() {
     align-items: center;
     background: linear-gradient(to right, var(--rarity-color), var(--card) 30%);
     border-bottom: 1px solid var(--base-dimmed);
-    &.clickable {
+    &.link {
       cursor: pointer;
     }
     img {

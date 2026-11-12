@@ -1,5 +1,12 @@
 <template>
-  <item-card :id="item.itemId" :icon="item.icon" :title :rarity="item.rarity" :highlight="isAffordable">
+  <item-card
+    :id="item.itemId"
+    :icon="item.icon"
+    :title
+    :rarity="item.rarity"
+    :highlight="isAffordable"
+    link="database"
+  >
     <div>{{ formatCredValue(item.price) }}</div>
   </item-card>
 </template>
