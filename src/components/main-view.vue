@@ -231,11 +231,6 @@ function syncPrices() {
     gap: 0.5rem;
     align-items: center;
     margin-block: 0.5rem;
-    > * {
-      display: flex;
-      gap: 0.125rem;
-      align-items: center;
-    }
   }
   .offer-expired {
     color: #ffd43b;

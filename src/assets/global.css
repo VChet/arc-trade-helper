@@ -62,13 +62,6 @@ select {
   margin: 0;
   font: inherit;
 }
-legend,
-summary {
-  user-select: none;
-}
-summary {
-  cursor: pointer;
-}
 ul,
 ol {
   padding: 0;
