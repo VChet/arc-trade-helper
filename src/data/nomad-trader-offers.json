@@ -1,19 +1,11 @@
 [
   {
-    "itemId": "game-cosmetic-237749844",
-    "title": "2.5 Backpack Attachment: Gas Mask",
+    "itemId": "game-cosmetic-n2118959779",
+    "title": "2.6 Backpack Charm: Lemons",
     "rarity": "Common",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/81761e95b13a024ceedc0d057a0ca309e5b4f3ca4b03832751d377d2b004618a.png",
-    "price": 75000,
-    "expires": "2026-11-17T13:00:00+00:00"
-  },
-  {
-    "itemId": "game-cosmetic-603418267",
-    "title": "2.5 Emote: Angry",
-    "rarity": "Common",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/dc5f4da9f9c3da530fe98f863c86dfa0debb401bbcaf2a0ef92aa582b535346b.png",
-    "price": 75000,
-    "expires": "2026-11-17T13:00:00+00:00"
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/4a91f232e73e7e3791f4aa065a3d33ab6fc094e745249cafb380c6125045fcf6.png",
+    "price": 90000,
+    "expires": "2026-11-24T13:00:00+00:00"
   },
   {
     "itemId": "raider-tokens",
@@ -21,7 +13,15 @@
     "rarity": "Common",
     "icon": "https://static.metaforge.app/arc-raiders/icons/raider-tokens.webp",
     "price": 150000,
-    "expires": "2026-11-17T13:00:00+00:00"
+    "expires": "2026-11-24T13:00:00+00:00"
+  },
+  {
+    "itemId": "deadline",
+    "title": "Deadline",
+    "rarity": "Epic",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/8af3c45402fe1d383e6eeb175d17b566b7622c0488543f3dccc8479724307410.png",
+    "price": 30000,
+    "expires": "2026-11-24T13:00:00+00:00"
   },
   {
     "itemId": "hullcracker-ii",
@@ -29,14 +29,14 @@
     "rarity": "Epic",
     "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5ce13cda08706c8280e8357967706a5f89a550bf2e228e1922e6f8a6d311a8a0.png",
     "price": 30000,
-    "expires": "2026-11-17T13:00:00+00:00"
+    "expires": "2026-11-24T13:00:00+00:00"
   },
   {
-    "itemId": "wolfpack",
-    "title": "Wolfpack",
-    "rarity": "Epic",
-    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/5049f52ab01f27e18bc938a171317b4ee69173612968aa43b914e90665b2a275.png",
-    "price": 30000,
-    "expires": "2026-11-17T13:00:00+00:00"
+    "itemId": "aphelion-rifle",
+    "title": "Aphelion",
+    "rarity": "Legendary",
+    "icon": "https://static.metaforge.app/arc-raiders/preview/20260919/c1c59f3cf0cd556bd66aeacc32db364e8db92fc8da6986f5f4fd60c1a3476ec2.png",
+    "price": 50000,
+    "expires": "2026-11-24T13:00:00+00:00"
   }
 ]
