@@ -149,6 +149,8 @@
   </main>
 </template>
 <script setup lang="ts">
+import { nextTick } from "vue";
+import { useTimeoutFn } from "@vueuse/core";
 import {
   IconAlertTriangle,
   IconArrowsExchange,
@@ -163,7 +165,7 @@ import {
 } from "@tabler/icons-vue";
 import { ITEM_IDS, TOKENS_ID } from "@/constants/items";
 import { CAPACITY } from "@/helpers/capacity";
-import { formatCredValue, formatTimeLeft } from "@/helpers/format";
+import { convertToMs, formatCredValue, formatTimeLeft } from "@/helpers/format";
 import { useItemsStore } from "@/store/items";
 import traderItemsJson from "../data/nomad-trader-offers.json" with { type: "json" };
 import traderServicesJson from "../data/nomad-trader-services.json" with { type: "json" };
@@ -198,6 +200,11 @@ function setQuantity(id: Item["id"], quantity: number) {
 function syncPrices() {
   window.dispatchEvent(new Event("sync-prices"));
 }
+
+function fetchPrices() {
+  nextTick(() => window.dispatchEvent(new Event("fetch-prices")));
+}
+useTimeoutFn(fetchPrices, convertToMs(5, "minutes"), { immediateCallback: true });
 </script>
 <style>
 .main-container {

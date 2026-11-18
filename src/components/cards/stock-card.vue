@@ -43,7 +43,7 @@
   </item-card>
 </template>
 <script setup lang="ts">
-import { computed, onMounted, ref, type HTMLAttributes } from "vue";
+import { computed, ref, type HTMLAttributes } from "vue";
 import { useEventListener, watchDebounced } from "@vueuse/core";
 import { IconChartHistogram, IconPackages, IconSeedling } from "@tabler/icons-vue";
 import { SEEDS_ID } from "@/constants/items";
@@ -96,10 +96,10 @@ async function updateRecommendedPrice() {
   if (recommendedPrice.value.price && !price.value) price.value = recommendedPrice.value.price;
 }
 
-onMounted(updateRecommendedPrice);
 useEventListener(window, "sync-prices", () => {
   if (recommendedPrice.value.price) price.value = recommendedPrice.value.price;
 });
+useEventListener(window, "fetch-prices", updateRecommendedPrice);
 </script>
 <style>
 .stock-card {
