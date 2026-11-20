@@ -1,14 +1,16 @@
 <template>
   <section class="trade-side">
-    <h5>{{ title }}</h5>
-    <div v-if="side.items.length > 1" class="summary">
-      <span>
-        <icon-layout-grid title="slots" /> {{ side.usedSlots }}/{{ capacity }}
-      </span>
-      <span>
-        <icon-weight title="weight" /> {{ formatWeight(side.totalWeight) }}
-      </span>
-    </div>
+    <header>
+      <h5>{{ title }}</h5>
+      <div v-if="side.items.length > 1" class="summary slots">
+        <span>
+          <icon-layout-grid title="slots" /> {{ side.usedSlots }}/{{ capacity }}
+        </span>
+        <span>
+          <icon-weight title="weight" /> {{ formatWeight(side.totalWeight) }}
+        </span>
+      </div>
+    </header>
     <ul class="grid">
       <trade-card v-for="item in side.items" :key="item.itemId" :item />
     </ul>
@@ -27,3 +29,20 @@ interface Props {
 }
 defineProps<Props>();
 </script>
+<style>
+.trade-side {
+  > header {
+    display: inline-flex;
+    gap: 1rem;
+    align-items: baseline;
+    .slots {
+      font-size: 0.925rem;
+      span {
+        display: inline-flex;
+        gap: 0.125rem;
+        align-items: center;
+      }
+    }
+  }
+}
+</style>
